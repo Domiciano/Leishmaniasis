@@ -1,0 +1,245 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_green_localizacion"
+    tools:context="i2t.cideim.leishmaniasis.QuestionActivity$PlaceholderFragment">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_green_localizacion">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/question_localizacion_title"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/title" />
+
+        <ImageView
+            android:id="@+id/imageViewInfo"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/info"
+            android:src="@drawable/info"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/color_green_localizacion">
+
+        <ImageView
+            android:id="@+id/imageViewAbout"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/about"
+            android:src="@drawable/about"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_green_localizacion">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/location_body"
+            android:layout_height="@dimen/location_body"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/figura" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="3dp"
+            android:layout_height="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonBody"
+            android:layout_width="@dimen/location_body_width"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/view"
+            android:layout_below="@+id/toggleButtonHead"
+            android:layout_centerHorizontal="true"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonLeftArm"
+            android:layout_width="@dimen/location_arms_width"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/view"
+            android:layout_alignTop="@+id/toggleButtonBody"
+            android:layout_toEndOf="@+id/toggleButtonBody"
+            android:layout_toRightOf="@+id/toggleButtonBody"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonRightArm"
+            android:layout_width="@dimen/location_arms_width"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/view"
+            android:layout_alignTop="@+id/toggleButtonBody"
+            android:layout_toLeftOf="@+id/toggleButtonBody"
+            android:layout_toStartOf="@+id/toggleButtonBody"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonRightLeg"
+            android:layout_width="@dimen/location_legs_width"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_below="@+id/view"
+            android:layout_toLeftOf="@+id/view"
+            android:layout_toStartOf="@+id/view"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonLeftLeg"
+            android:layout_width="@dimen/location_legs_width"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_below="@+id/view"
+            android:layout_toEndOf="@+id/view"
+            android:layout_toRightOf="@+id/view"
+            android:background="@color/color_transparent"
+            android:checked="false"
+            android:text="New ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraH"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraB"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_below="@+id/toggleButtonHead"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraLA"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_below="@+id/imageViewUlceraB"
+            android:layout_toEndOf="@+id/toggleButtonBody"
+            android:layout_toRightOf="@+id/toggleButtonBody"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraRA"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_below="@+id/imageViewUlceraB"
+            android:layout_toLeftOf="@+id/toggleButtonHead"
+            android:layout_toStartOf="@+id/toggleButtonHead"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraLL"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_below="@+id/view"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="54dp"
+            android:layout_toEndOf="@+id/view"
+            android:layout_toRightOf="@+id/view"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewUlceraRL"
+            android:layout_width="@dimen/location_ulcera"
+            android:layout_height="@dimen/location_ulcera"
+            android:layout_below="@+id/view"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="54dp"
+            android:layout_toLeftOf="@+id/view"
+            android:layout_toStartOf="@+id/view"
+            android:src="@drawable/ulcera"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="@dimen/question_answer_button"
+        android:layout_height="@dimen/question_answer_button"
+        android:layout_alignBottom="@+id/footer"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_save"
+        android:onClick="onButtonSaveClick" />
+</RelativeLayout>

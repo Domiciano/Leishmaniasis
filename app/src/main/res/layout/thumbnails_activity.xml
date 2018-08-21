@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.ThumbnailsActivity"
+    android:background="@color/orange_background">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_thumbs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="80px"
+            android:layout_marginBottom="290px"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20px">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lesiones brazo derecho"
+                    android:gravity="center"
+                    android:id="@+id/titulo_thumbs"
+                    android:textStyle="bold|italic"
+                    android:textColor="#FFF"
+                    android:textSize="11pt"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#FFF"
+                    />
+            </LinearLayout>
+
+            <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gridview_thumbs"
+                android:numColumns="3"
+                android:verticalSpacing="5dp"
+                android:horizontalSpacing="5dp"
+                android:gravity="center"
+                android:columnWidth="15dp"
+                android:stretchMode="columnWidth"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp">
+            </GridView>
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:background="@color/botones_background"
+                android:layout_gravity="center"
+                android:textColor="#FFF"
+                android:paddingLeft="40px"
+                android:paddingRight="40px"
+                android:layout_marginBottom="40px"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="Nueva Foto"
+                android:onClick="nuevaFoto"
+                android:textSize="8pt"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:textColor="#FFF"
+            android:background="@color/botones_background"
+            android:textSize="10pt"
+            android:layout_height="110px"
+            android:text="VOLVER"
+            android:onClick="doVolver"
+            android:gravity="center"
+
+            />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

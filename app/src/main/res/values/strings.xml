@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Leishmaniasis</string>
+
+    <!-- Common -->
+    <string name="info">Información</string>
+    <string name="about">Acerca de</string>
+    <string name="logo">Logo</string>
+    <string name="back_alert">Perderá todo el avance</string>
+    <string name="stay">Continuar</string>
+    <string name="go_back">Perder avance</string>
+
+    <!-- Login -->
+    <string name="login">Iniciar Sesión</string>
+    <string name="login_name">Nombre</string>
+    <string name="login_id">Identificación</string>
+    <string name="login_add">Agregar</string>
+    <string name="login_enter">Entrar</string>
+    <string name="login_user_does_not_exist">Usuario no existe</string>
+    <string name="login_invalid_data">Dato no válido</string>
+    <string name="login_welcome">Bienvenido</string>
+
+    <!-- Create user -->
+    <string name="create_title">Nuevo usuario evaluador</string>
+    <string name="create_subtitle">Evaluador</string>
+    <string name="create">Crear</string>
+    <string name="create_name">Nombre</string>
+    <string name="create_last_name">Apellido</string>
+    <string name="create_genre">Género:</string>
+    <string name="create_id">Identificación</string>
+    <string name="create_m">M</string>
+    <string name="create_f">F</string>
+    <string name="create_non_valid_data">Dato no válido</string>
+    <string name="create_user_exist">Usuario ya existe</string>
+
+    <!-- Patients -->
+    <string name="patients">Pacientes</string>
+    <string name="patients_title">Nombre del evaluador</string>
+    <string name="patients_subtitle">Pacientes</string>
+    <string name="patients_evaluate">Evaluar</string>
+    <string name="patients_name">Nombre</string>
+    <string name="patients_id">#</string>
+    <string name="patients_score">Puntaje</string>
+    <string name="patients_select">Seleccione un paciente</string>
+    <string name="patients_sync_close">Cerrar</string>
+    <string name="patients_sync_result">Resultado de la sincronización</string>
+    <string name="patients_sync_status_title">Sincronización</string>
+    <string name="patients_sync_status_text">Está sincronizando las evaluaciones, por favor espere.</string>
+
+    <!-- Create patient -->
+    <string name="create_patient">Crear</string>
+    <string name="create_patient_title">Nuevo paciente</string>
+    <string name="create_patient_subtitle_1">Datos de contacto</string>
+    <string name="create_patient_subtitle_2">Datos de vivienda</string>
+    <string name="create_patient_subtitle_3">Datos de emergencia</string>
+    <string name="create_patient_subtitle_4">Antecedentes</string>
+    <string name="create_patient_name">Nombre</string>
+    <string name="create_patient_lastname">Apellido</string>
+    <string name="create_patient_id">Número de documento</string>
+    <string name="create_patient_genre">Género:</string>
+    <!--+++++++++add+++++++++++++++++-->
+    <string name="create_patient_doc">Documento:</string>
+    <string name="create_patient_cc">CC</string>
+    <string name="create_patient_ti">TI</string>
+    <!--+++++++++add+++++++++++++++++-->
+    <string name="create_patient_m">M</string>
+    <string name="create_patient_f">F</string>
+    <string name="create_patient_address">Dirección</string>
+    <string name="create_patient_phone">Teléfono</string>
+    <string name="create_patient_birthdate">Fecha de nacimiento</string>
+    <string name="create_patient_department">Departamento</string>
+    <string name="create_patient_municipality">Municipio</string>
+    <string name="create_patient_lane">Vereda</string>
+    <string name="create_patient_c_name">Nombre</string>
+    <string name="create_patient_c_lastname">Apellido</string>
+    <string name="create_patient_c_phone">Teléfono</string>
+    <string name="create_patient_c_address">Dirección</string>
+    <string name="create_patient__injury_weeks">Semanas de 1a lesión</string>
+    <string name="create_patient_confirm">Confirme datos</string>
+    <string name="create_patient_confirm_ok">Confirmar</string>
+    <string name="create_patient_confirm_cancel">Cancelar</string>
+    <string name="create_patient_error">Error creando paciente</string>
+    <string name="create_patient_error_invalid_data">Llene todos los campos</string>
+    <string name="create_patient_subtitle_5">Última evaluación</string>
+
+    <string-array name="create_patient_document_types">
+        <item>Tipo de documento</item>
+        <item>CC</item>
+        <item>TI</item>
+    </string-array>
+    <string-array name="create_patient_departments">
+        <item>Departamento</item>
+        <item>NARIÑO</item>
+    </string-array>
+    <string-array name="create_patient_municipalities">
+        <item>Municipio</item>
+        <item>TUMACO</item>
+    </string-array>
+    <string-array name="create_patient_tumaco_lanes">
+        <item>Vereda</item>
+        <item>ABUPI</item>
+        <item>ALBICITO</item>
+        <item>ALTO ALBI</item>
+        <item>ALTO LIMON</item>
+        <item>ALTO PALAY</item>
+        <item>ALTO ULBI</item>
+        <item>BAJO PULGANDE</item>
+        <item>BARBACOAS</item>
+        <item>BARRIO ESTADIO</item>
+        <item>BOCAS DE CURAY</item>
+        <item>BRAZO LARGO</item>
+        <item>BUCHELI</item>
+        <item>CALVI ROSARIO</item>
+        <item>CAUNAPI</item>
+        <item>CERRO RUSO</item>
+        <item>CHAGUI</item>
+        <item>CHAGUI-CHIMBUZA</item>
+        <item>CHIMBUZA</item>
+        <item>COLORADO</item>
+        <item>CORRIENTE GRANDE</item>
+        <item>CURAY</item>
+        <item>EL ESTERO</item>
+        <item>EL GUALTAL</item>
+        <item>EL PINDE</item>
+        <item>EL ROMPIDO</item>
+        <item>FILORUSO</item>
+        <item>FRANCISCO PIZARRO</item>
+        <item>GRAN ROSARIO</item>
+        <item>GRAN SABALO</item>
+        <item>GUADUAL</item>
+        <item>GUALAJO</item>
+        <item>GUANDAPI</item>
+        <item>GUAYACANA</item>
+        <item>HOJAL</item>
+        <item>HOJAS BLANCAS</item>
+        <item>INDA SABALETA</item>
+        <item>INGUAPI</item>
+        <item>ISLA DEL GALLO</item>
+        <item>KM 80</item>
+        <item>KM 81</item>
+        <item>KM 92</item>
+        <item>LA BRAVA</item>
+        <item>LA CHORRERA</item>
+        <item>LA GUAYACANA</item>
+        <item>LA NUEVA UNION</item>
+        <item>LA PIÑUELA</item>
+        <item>LA PLANADA</item>
+        <item>LA TOLA</item>
+        <item>LA VIÑA</item>
+        <item>LAGUNA CHIMBUZA</item>
+        <item>LAS MARIAS KM 91</item>
+        <item>LIMONES</item>
+        <item>LLORENTE</item>
+        <item>MAGUI PAYAN</item>
+        <item>MATA DE PLATANO</item>
+        <item>PANELERO</item>
+        <item>PANELERO MATA DE ROS</item>
+        <item>PEÑA DE LOS SANTOS</item>
+        <item>PEÑA LIZA</item>
+        <item>PIANULPI</item>
+        <item>PICUAMBI</item>
+        <item>PIGUAMBI PALANGALA</item>
+        <item>PINDE</item>
+        <item>PIZARRO</item>
+        <item>PEÑA DE LOS SANTOS</item>
+        <item>PUERTO PALMA</item>
+        <item>PULGANDE CAMPO ALEGRE</item>
+        <item>PULGANTE</item>
+        <item>RIO CHAGUI</item>
+        <item>RIO CHAGY</item>
+        <item>RIO MANILLA</item>
+        <item>RIO MIRA</item>
+        <item>RIO PATIA</item>
+        <item>RIO ROSARIO</item>
+        <item>ROSARIO</item>
+        <item>SALAHONDA</item>
+        <item>SALISBI</item>
+        <item>SAN JACINTO</item>
+        <item>SAN JUAN LA COSTA</item>
+        <item>SAN LORENZO</item>
+        <item>SANTA ROSITA</item>
+        <item>SEGUBITO</item>
+        <item>TABLON</item>
+        <item>TANDIL</item>
+        <item>TANGARIAL</item>
+        <item>TOLA</item>
+        <item>TUMACO</item>
+        <item>VEREDA LA MARIA</item>
+    </string-array>
+
+    <!-- Evaluation -->
+    <string name="evaluation_title">Nueva evaluación</string>
+    <string name="evaluation_patient">Paciente:</string>
+    <string name="evaluation_patient_Name">Nombre Apellido</string>
+    <string name="evaluation_score">Puntaje actual</string>
+    <string name="evaluation_ulceras">Úlceras</string>
+    <string name="evaluation_lesiones">Agrupadas</string>
+    <string name="evaluation_localizacion">Localización</string>
+    <string name="evaluation_actividades">Actividades</string>
+    <string name="evaluation_antecedentes">Antecedentes</string>
+    <string name="evaluation_manta">Manta</string>
+    <string name="evaluation_subtitle_ulceras">Úlcera bordes levantados</string>
+    <string name="evaluation_subtitle_lesiones">Lesiones agrupadas</string>
+    <string name="evaluation_subtitle_localizacion">Localización de la lesión</string>
+    <string name="evaluation_subtitle_actividades">Actividades de riesgo</string>
+    <string name="evaluation_subtitle_antecedentes">Antecedentes de golpes</string>
+    <string name="evaluation_subtitle_manta">Contacto con la manta</string>
+    <string name="evaluation_save">Guardar</string>
+    <string name="evaluation_fill_fields">Ingrese toda la información para continuar</string>
+    <string name="evaluation_saved">Evaluación guardada</string>
+
+    <!-- Questions -->
+    <string name="question_select_answer">Selecciona una respuesta</string>
+    <!-- Ulcera -->
+    <string name="question_ulceras_title">ÚLCERAS CON BORDES LEVANTADOS</string>
+    <string name="question_ulceras_clue1">Llaga</string>
+    <string name="question_ulceras_clue2">Bordes duros y levantados</string>
+    <!-- Lesiones -->
+    <string name="question_lesiones_title">LESIONES AGRUPADAS</string>
+    <string name="question_hisopo_title">MUESTRA CON HISOPO</string>
+
+    <string name="question_lesiones_clue1">Tiene 3 o más lesiones</string>
+    <string name="question_lesiones_clue2">Hay menos de 10cm entre ellas</string>
+    <string name="question_lesiones_clue3">No son lesiones satélites</string>
+    <!-- Localizacion -->
+    <string name="question_localizacion_title">LOCALIZACIÓN DE LESIONES</string>
+    <!-- Actividades -->
+    <string name="question_actividades_title">ACTIVIDADES DE RIESGO</string>
+    <string name="question_actividades_clue1">Entró al monte</string>
+    <string name="question_actividades_clue2">Estuvo 4 horas o más</string>
+    <string name="question_actividades_clue3">Al atardecer, en la noche o al amanecer</string>
+    <!-- Antecedentes -->
+    <string name="question_antecedentes_title">ANTECEDENTES DE GOLPES</string>
+    <string name="question_antecedentes_clue1">Se ha golpeado o quemado</string>
+    <string name="question_antecedentes_clue2">En el sitio de la lesión</string>
+    <string name="question_antecedentes_clue3">Fue antes</string>
+    <!-- Manta -->
+    <string name="question_manta_title">CONTACTO CON LA MANTA</string>
+    <string name="question_manta_clue1">Conoce la manta, palomilla o jején</string>
+    <string name="question_manta_clue2">Ha sido picado</string>
+    <string name="question_manta_clue3">Picadura dolorosa</string>
+
+    <!-- View patients -->
+    <string name="go_back_view">Volver</string>
+    <string name="view_patient_title">Detalles del paciente</string>
+
+    <!-- Dialog about -->
+    <string name="about_title">LEISHMANIASIS CUTANEA</string>
+    <string name="about_description">Es una enfermedad de la piel, causada por un parásito llamado leishmania y transmitida por la manta. El parásito invade el tejido de la piel y causa úlceras que aumentan de tamaño, si no se trata la enfermedad.</string>
+    <string name="about_faq">Preguntas Frecuentes</string>
+    <string name="about_faq1_title">¿A qué personas afecta más?</string>
+    <string name="about_faq1_description">A las personas expuestas a la picadura de la mosquita incluyendo niños, adultos y ancianos y también a las personas trabajadoras por exposición en su trabajo.\n\nA cualquier persona que trabaja en zonas boscosas o enmontadas (soldados  agricultores, cazadores, pescadores de río de las ensenadas).\n\nA las personas que viven en casas que están cerca de los bosques.\n\nA las personas que viven en lugares cálidos o templados y generalmente en zonas rurales.\n\nA las personas que entran a los bosques al anochecer o en horas de la madrugada (sobre todo en noches de luna).</string>
+    <string name="about_faq2_title">¿Cómo se presenta?</string>
+    <string name="about_faq2_description">Comienza dos o tres semanas después de la picadura con una lesión nodular (grano, pelotica, inflamación local o tronco) generalmente en cara brazos, piernas o en otra parte del cuerpo (sitios donde las mosquitas pican), luego comienza la comezón, aumenta en tamaño en la mayoría de los casos se ulcera (aparece la herida); por lo general no duele.\n\nEstas lesiones (loras, llagas, úlceras, granos) pueden ser únicas o múltiples y pueden desaparecer o volverse crónicas (que duran mucho tiempo).  A los pocos meses o a veces transcurridos una o más años, el parásito puede evadir por dentro de la nariz (mucosa) y el paladar, produciendo lesiones importantes.\n\nLas cicatrices que deja permiten saber que a una persona le ha dado leishmaniasis.</string>
+    <string name="about_faq3_title">¿Qué se debe hacer?</string>
+    <string name="about_faq3_description">Explicar a la persona enferma que se trata y como se da el guaral.\n\nAsistir al médico para confirmar la enfermedad (no todo lo que parece Leishmaniasis es Leishmaniasis) y recibir el tratamiento especifico (Glucantime).\n\nComunicar a la comunidad, a los organismos y autoridades en salud sobre la presencia de la mosquita y de la enfermedad en la zona.\n\nBuscar en la zona a otras personas con la enfermedad e identificar las mosquitas transmitorias.</string>
+    <string name="about_faq4_title">¿Cómo se puede prevenir?</string>
+    <string name="about_faq4_description">Las medidas de control varían de una zona a otra, dependiendo del sitio (casa o bosque) donde la mosquita pica.  Pueden incluirse entre otras:\n\nDetectar rápidamente los casos para el tratamiento oportuno (prevenir complicaciones).\n\nUtilizar repelente de insectos   y ropa protectora si es inevitable la exposición a la mosquita.\n\nEducar a la comunidad respecto a los modos de transmisión y métodos de prevención.\n\nNo entrar al bosque durante la noche o al amanecer.\n\nDormir con toldillo (de tela) en aquellos lugares donde las mosquitas pican dentro de la casa.\n\nTumbar el monte que está cerca de las viviendas.\n\nTapar los huecos de la casa, por donde pueden entrar las mosquitas.\n\nPoner anjeos en las ventanas.\n\nAlejar de la casa los animales domésticos, porque estos atraen las mosquitas.\n\nHacer investigaciones formales o informales para conocer otros aspectos de la enfermedad en la zona.</string>
+    <string name="about_faq5_title">¿Cómo se transmite?</string>
+    <string name="about_faq5_description">Por la picadura de una mosquita (llamada manta o palomilla) que ha adquirido la enfermedad de un animal monte:\n\nPuede ser los pericos (osos perezosos), las zorras los armadillos, los ratones de monte o los venados.\n\nLa manta es blanca, con alitas redondas, más grande que el jején y más pequeña que el zancudo. Se le encuentra principalmente en las raíces de los árboles  en las cuevas de los animales y a veces dentro de las casa.\n\nPica al anochecer o al amanecer, pero más entre seis y siete de la noche.\n\nLa manta pica a un animal infectado, se infecta y luego pica a una persona.</string>
+    <string name="about_faq6_title">Características</string>
+    <string name="about_faq6_description">La Manta puede reconocerse por las siguientes características:\n\nCuando pica a una persona, no da vueltas como el zancudo, si no que llega directamente.\n\nCuando llega donde la persona, empieza a brincar hasta encontrar el sitio donde va a picar.\n\nLa picadura es dolorosa.\n\nCuando pica se queda como pegada y es difícil hacer que se vaya.\n\nNo hace ruido como el zancudo o como otros moscos.\n\nEs muy peluda y parece blanca.\n\nTiene solo dos alas que siempre mantiene paradas en forma de V.</string>
+
+    <!-- Dialog info -->
+    <string name="info_title">¿Cómo funciona?</string>
+    <string name="info_subtitle">Elige cualquier categoría para empezar</string>
+    <string name="info_ulceras_title">ÚLCERAS CON BORDES LEVANTADOS</string>
+    <string name="info_ulceras_description">• Toca el botón para ingresar. \n• Observa las fotos. \n• Observa el tipo de lesiones. \n• Toma las fotos. \n• Selecciona la respuesta. \n• Vuelve a la pantalla de inicio. </string>
+    <string name="info_lesiones_title">LESIONES AGRUPADAS</string>
+    <string name="info_lesiones_description">• Toca el botón para ingresar. \n• Observa las fotos. \n• Cuenta las lesiones. \n• Mide la distancia entre ellas. \n• Selecciona la respuesta.</string>
+    <string name="info_localizacion_title">LOCALIZACIÓN DE LESIONES</string>
+    <string name="info_localizacion_description">• Toca el botón para ingresar. \n• Observa las lesiones en el paciente. \n• Selecciona las partes del cuerpo en que se encuentran las lesiones. \n• Vuelve a la pantalla de inicio.</string>
+    <string name="info_actividades_title">ACTIVIDADES DE RIESGO</string>
+    <string name="info_actividades_description">• Toca el botón para ingresar. \n• Observa el video. \n• Pregunta al paciente. \n• Selecciona la respuesta. \n• Vuelve a la pantalla de inicio.</string>
+    <string name="info_antecedentes_title">ANTECEDENTES DE GOLPES</string>
+    <string name="info_antecedentes_description">• Toca el botón para ingresar. \n• Observa las fotos. \n• Pregunta al paciente. \n• Selecciona la respuesta. \n• Vuelve a la pantalla de inicio.</string>
+    <string name="info_manta_title">CONTACTO CON LA MANTA</string>
+    <string name="info_manta_description">• Toca el botón para ingresar. \n• Observa el video. \n• Pregunta al paciente. \n• Selecciona la respuesta. \n• Vuelve a la pantalla de inicio.</string>
+
+    <!-- Dialog profile -->
+    <string name="profile_title">Perfil del usuario</string>
+    <string name="profile_name">Nombre</string>
+    <string name="profile_lastname">Apellido</string>
+    <string name="profile_genre">Género</string>
+    <string name="profile_id">Identificación</string>
+    <string name="profile_close">Cerrar</string>
+
+    <!-- MISC -->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_sync">Sincronizar</string>
+    <string name="action_see_profile">Ver perfil</string>
+    <string name="starting_sync">Iniciando la sincronización</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_create_user">Crear usuario</string>
+    <string name="title_activity_patients">Pacientes</string>
+    <string name="title_activity_create_patient">Crear paciente</string>
+    <string name="title_activity_evaluation">Evaluar paciente</string>
+    <string name="title_activity_question">Evaluar paciente</string>
+    <string name="title_activity_view_patient">Ver paciente</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

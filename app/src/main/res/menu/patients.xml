@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".PatientsAcivity" >
+    <item android:id="@+id/action_sync"
+        android:title="@string/action_sync"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_see_profile"
+        android:title="@string/action_see_profile"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+</menu>

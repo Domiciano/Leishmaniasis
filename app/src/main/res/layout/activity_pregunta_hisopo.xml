@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_cuerpo_humano"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escriba el número de lesiones para esta zona"
+                android:textSize="24sp"
+                android:padding="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de lesiones"
+                android:inputType="number"
+                android:textSize="24sp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/botones_cuerpo">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="110px"
+                android:text="ACEPTAR"
+                android:background="@color/botones_background"
+                android:textColor="#FFF"
+                android:textSize="10pt"
+                android:gravity="center"
+                android:onClick="terminarToma"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

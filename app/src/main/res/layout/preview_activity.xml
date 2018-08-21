@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.VistaPreviaFotoActivity"
+    android:background="@color/orange_background">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_preview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="80px"
+            android:layout_marginBottom="110px"
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20px">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lesiones brazo derecho"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textColor="#FFF"
+                    android:id="@+id/titulo_vista_previa"
+                    android:textSize="11pt"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#FFF"
+                    />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:id="@+id/foto_image"/>
+                </LinearLayout>
+            </ScrollView>
+            
+
+
+
+
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:textColor="#FFF"
+            android:background="@color/botones_background"
+            android:textSize="10pt"
+            android:layout_height="110px"
+            android:text="AÑADIR FOTO"
+            android:layout_alignParentBottom="true"
+            android:onClick="doAction"
+            android:gravity="center"
+
+            android:id="@+id/boton_ok_preview"/>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

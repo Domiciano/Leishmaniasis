@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="icesi.i2t.leishmaniasisst.Evaluacion">
+    <item
+        android:id="@+id/cancel_eval"
+        android:orderInCategory="100"
+        android:title="Cancelar Evaluación"
+        app:showAsAction="never" />
+</menu>

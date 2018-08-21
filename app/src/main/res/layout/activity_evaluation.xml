@@ -1,0 +1,528 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="i2t.cideim.leishmaniasis.EvaluationActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/evaluation_title"
+            android:textColor="@color/color_green"
+            android:textSize="@dimen/title" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignEnd="@+id/textViewTitle"
+            android:layout_alignRight="@+id/textViewTitle"
+            android:layout_below="@+id/textViewTitle"
+            android:background="@color/color_orange" />
+
+        <view
+            android:id="@+id/view2"
+            class="i2t.cideim.custom.TriangleView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/view"
+            app:color="@color/color_orange"
+            app:orientation="down" />
+
+        <ImageView
+            android:id="@+id/imageViewInfo"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/info"
+            android:onClick="onInfoButtonPressed"
+            android:src="@drawable/info" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/imageViewAbout"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/about"
+            android:onClick="onAboutButtonPressed"
+            android:src="@drawable/about" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_gray_green"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onButtonSaveClick"
+            android:text="@string/evaluation_save"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/evaluation_save_button"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/textViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="4dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/evaluation_patient"
+            android:textColor="@color/color_green"
+            android:textSize="@dimen/evaluation_patient_name" />
+
+        <TextView
+            android:id="@+id/textViewPatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textViewText"
+            android:layout_toRightOf="@+id/textViewText"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/evaluation_patient_Name"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/evaluation_patient_name" />
+
+        <View
+            android:id="@+id/dummyView1"
+            android:layout_width="3dp"
+            android:layout_height="3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/buttonLesiones"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_above="@+id/dummyView1"
+            android:layout_alignLeft="@+id/dummyView1"
+            android:layout_alignStart="@+id/dummyView1"
+            android:layout_marginBottom="@dimen/evaluation_button_margin_base_vertical"
+            android:layout_marginLeft="@dimen/evaluation_button_margin_base_horizontal"
+            android:background="@drawable/button_agrupadas"
+            android:onClick="onButtonLesionesClick" />
+
+        <ImageView
+            android:id="@+id/imageViewCheckLesiones"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonLesiones"
+            android:layout_alignRight="@id/buttonLesiones"
+            android:layout_alignTop="@id/buttonLesiones"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonLocalizacion"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_alignBottom="@+id/buttonLesiones"
+            android:layout_toEndOf="@+id/buttonLesiones"
+            android:layout_toRightOf="@+id/buttonLesiones"
+            android:background="@drawable/button_localizacion"
+            android:onClick="onButtonLocalizacionClick" />
+
+        <ImageView
+            android:id="@+id/imageViewCheckLocalizacion"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonLocalizacion"
+            android:layout_alignRight="@id/buttonLocalizacion"
+            android:layout_alignTop="@id/buttonLocalizacion"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonAntecedentes"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_below="@+id/dummyView1"
+            android:layout_marginRight="@dimen/evaluation_button_margin_base_horizontal"
+            android:layout_marginTop="@dimen/evaluation_button_margin_base_vertical"
+            android:layout_toLeftOf="@+id/dummyView1"
+            android:layout_toStartOf="@+id/dummyView1"
+            android:background="@drawable/button_antecedentes"
+            android:onClick="onButtonAntecedentesClick" />
+
+        <ImageView
+            android:id="@+id/imageViewCheckAntecedentes"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonAntecedentes"
+            android:layout_alignRight="@id/buttonAntecedentes"
+            android:layout_alignTop="@id/buttonAntecedentes"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonIsopo"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_alignTop="@+id/buttonLesiones"
+            android:layout_toLeftOf="@+id/buttonLesiones"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/button_hisopo"
+            android:onClick="onButtonHisopoClick" />
+
+        <ImageView
+            android:id="@+id/imageViewHisopo"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonIsopo"
+            android:layout_alignRight="@id/buttonIsopo"
+            android:layout_alignTop="@id/buttonIsopo"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonActividades"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_alignTop="@+id/buttonAntecedentes"
+            android:layout_toLeftOf="@+id/buttonAntecedentes"
+            android:layout_toStartOf="@+id/buttonAntecedentes"
+            android:background="@drawable/button_actividades"
+            android:onClick="onButtonActividadesClick" />
+
+        <ImageView
+            android:id="@+id/imageViewCheckActividades"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonActividades"
+            android:layout_alignRight="@id/buttonActividades"
+            android:layout_alignTop="@id/buttonActividades"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonManta"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_alignLeft="@+id/buttonActividades"
+            android:layout_alignStart="@+id/buttonActividades"
+            android:layout_below="@+id/buttonActividades"
+            android:layout_marginLeft="@dimen/evaluation_button_margin_center"
+            android:layout_marginTop="@dimen/evaluation_button_margin_vertical"
+            android:background="@drawable/button_manta"
+            android:onClick="onButtonMantaClick" />
+
+        <ImageView
+            android:id="@+id/imageViewCheckManta"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonManta"
+            android:layout_alignRight="@id/buttonManta"
+            android:layout_alignTop="@id/buttonManta"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonUlceras"
+            android:layout_width="@dimen/evaluation_button"
+            android:layout_height="@dimen/evaluation_button"
+            android:layout_above="@+id/buttonLocalizacion"
+            android:layout_alignEnd="@+id/buttonLocalizacion"
+            android:layout_alignRight="@+id/buttonLocalizacion"
+            android:layout_marginBottom="@dimen/evaluation_button_margin_vertical"
+            android:layout_marginRight="@dimen/evaluation_button_margin_center"
+            android:layout_toStartOf="@+id/buttonAntecedentes"
+            android:layout_toLeftOf="@+id/buttonAntecedentes"
+            android:background="@drawable/button_ulceras"
+            android:onClick="onButtonUlcerasClick" />
+
+        <ImageView
+            android:id="@+id/imageViewIcon"
+            android:layout_width="@dimen/evaluation_check_marker"
+            android:layout_height="@dimen/evaluation_check_marker"
+            android:layout_alignEnd="@id/buttonUlceras"
+            android:layout_alignRight="@id/buttonUlceras"
+            android:layout_alignTop="@id/buttonUlceras"
+            android:layout_marginRight="@dimen/evaluation_check_marker_margin_right"
+            android:layout_marginTop="@dimen/evaluation_check_marker_margin_top"
+            android:src="@drawable/checkbox"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/textViewIdentification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/dummyView1"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/evaluation_score"
+            android:textColor="@color/color_green"
+            android:textSize="@dimen/evaluation_score" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignEnd="@+id/textViewIdentification"
+            android:layout_alignLeft="@+id/textViewIdentification"
+            android:layout_alignRight="@+id/textViewIdentification"
+            android:layout_alignStart="@+id/textViewIdentification"
+            android:layout_below="@+id/textViewIdentification"
+            android:background="@color/color_orange" />
+
+        <view
+            android:id="@+id/view4"
+            class="i2t.cideim.custom.TriangleView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignLeft="@+id/view3"
+            android:layout_alignStart="@+id/view3"
+            android:layout_below="@+id/view3"
+            app:color="@color/color_orange"
+            app:orientation="down" />
+
+        <TextView
+            android:id="@+id/textViewScoreUlceras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/view3"
+            android:layout_alignRight="@+id/view3"
+            android:layout_below="@+id/view4"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewUlceras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/view4"
+            android:layout_alignStart="@+id/view4"
+            android:layout_alignTop="@+id/textViewScoreUlceras"
+            android:layout_toLeftOf="@+id/textViewScoreUlceras"
+            android:layout_toStartOf="@+id/textViewScoreUlceras"
+            android:text="@string/evaluation_ulceras"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewScoreLesiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/view3"
+            android:layout_alignRight="@+id/view3"
+            android:layout_below="@+id/textViewScoreUlceras"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewLesiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewUlceras"
+            android:layout_alignStart="@+id/textViewUlceras"
+            android:layout_below="@+id/textViewScoreUlceras"
+            android:layout_toLeftOf="@+id/textViewScoreUlceras"
+            android:layout_toStartOf="@+id/textViewScoreUlceras"
+            android:text="@string/evaluation_lesiones"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewScoreLocalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/view3"
+            android:layout_alignRight="@+id/view3"
+            android:layout_below="@+id/textViewScoreLesiones"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewLocalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewLesiones"
+            android:layout_alignStart="@+id/textViewLesiones"
+            android:layout_below="@+id/textViewLesiones"
+            android:layout_toLeftOf="@+id/textViewScoreLocalizacion"
+            android:layout_toStartOf="@+id/textViewScoreLesiones"
+            android:text="@string/evaluation_localizacion"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewScoreActividades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textViewScoreLocalizacion"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewActividades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewLocalizacion"
+            android:layout_alignStart="@+id/textViewLocalizacion"
+            android:layout_below="@+id/textViewScoreLocalizacion"
+            android:layout_toStartOf="@+id/textViewScoreActividades"
+            android:layout_toLeftOf="@+id/textViewScoreActividades"
+            android:text="@string/evaluation_actividades"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewScoreAntecedentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/view3"
+            android:layout_alignRight="@+id/view3"
+            android:layout_below="@+id/textViewScoreActividades"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewAntecedentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewActividades"
+            android:layout_alignStart="@+id/textViewActividades"
+            android:layout_below="@+id/textViewScoreActividades"
+            android:layout_toLeftOf="@+id/textViewScoreAntecedentes"
+            android:layout_toStartOf="@+id/textViewScoreAntecedentes"
+            android:text="@string/evaluation_antecedentes"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewScoreManta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/view3"
+            android:layout_alignRight="@+id/view3"
+            android:layout_below="@+id/textViewAntecedentes"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <TextView
+            android:id="@+id/textViewManta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewAntecedentes"
+            android:layout_alignStart="@+id/textViewAntecedentes"
+            android:layout_below="@+id/textViewAntecedentes"
+            android:layout_toLeftOf="@+id/textViewScoreManta"
+            android:layout_toStartOf="@+id/textViewScoreManta"
+            android:text="@string/evaluation_manta"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignEnd="@+id/textViewScoreManta"
+            android:layout_alignLeft="@+id/textViewManta"
+            android:layout_alignRight="@+id/textViewScoreManta"
+            android:layout_alignStart="@+id/textViewManta"
+            android:layout_below="@+id/textViewManta"
+            android:layout_toEndOf="@+id/textViewPatientName"
+            android:layout_toRightOf="@+id/textViewPatientName"
+            android:background="@color/color_orange" />
+
+        <view
+            android:id="@+id/view6"
+            class="i2t.cideim.custom.TriangleView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignLeft="@+id/view5"
+            android:layout_alignStart="@+id/view5"
+            android:layout_below="@+id/view5"
+            app:color="@color/color_orange"
+            app:orientation="down" />
+
+        <TextView
+            android:id="@+id/textViewScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textViewScoreManta"
+            android:layout_alignRight="@+id/textViewScoreManta"
+            android:layout_alignTop="@+id/view6"
+            android:fontFamily="sans-serif-light"
+            android:text="--"
+            android:textColor="@color/color_darkgray"
+            android:textSize="@dimen/evaluation_score_detail" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.TroncoActivity"
+    android:background="@color/orange_background"
+    android:id="@+id/root">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_piernader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="110px"
+            android:gravity="center_horizontal"
+
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lesiones pierna derecha"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textColor="#FFF"
+                    android:textSize="11pt"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#FFF"
+                    />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/region_pierna_der">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="50px"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/img_pierna_frente"
+                        android:id="@+id/pierna_der_frente"/>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/img_pierna_atras"
+                        android:id="@+id/pierna_der_espalda"
+                        android:layout_marginLeft="40dp"/>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp75"
+                    android:background="@drawable/bp75"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp76"
+                    android:background="@drawable/bp76"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp77"
+                    android:background="@drawable/bp77"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp78"
+                    android:background="@drawable/bp78"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp79"
+                    android:background="@drawable/bp79"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp80"
+                    android:background="@drawable/bp80"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp81"
+                    android:background="@drawable/bp81"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp82"
+                    android:background="@drawable/bp82"
+                    android:visibility="gone"/>
+
+                <Button
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:id="@+id/bp83"
+                android:background="@drawable/bp83"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp84"
+                    android:background="@drawable/bp84"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp85"
+                    android:background="@drawable/bp85"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp86"
+                    android:background="@drawable/bp86"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp87"
+                    android:background="@drawable/bp87"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp88"
+                    android:background="@drawable/bp88"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp89"
+                    android:background="@drawable/bp89"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp90"
+                    android:background="@drawable/bp90"
+                    android:visibility="gone"/>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="9pt"
+                android:layout_marginTop="40px"
+                android:text="Lugar aproximado de la lesión"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="@color/botones_background"
+            android:textSize="10pt"
+            android:textColor="#FFF"
+            android:height="110px"
+            android:layout_height="110px"
+            android:text="VOLVER"
+            android:layout_alignParentBottom="true"
+            android:onClick="doVolver"
+            android:gravity="center"
+
+            android:id="@+id/pierna_der_boton_volver"/>
+
+    </RelativeLayout>
+</RelativeLayout>

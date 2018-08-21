@@ -1,0 +1,276 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="i2t.cideim.leishmaniasis.CreateUserActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/imageViewIcon"
+            android:layout_width="@dimen/icons_size"
+            android:layout_height="@dimen/icons_size"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/icons_top_margin"
+            android:contentDescription="@string/create"
+            android:src="@drawable/personaje_naranja" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageViewIcon"
+            android:layout_toEndOf="@+id/imageViewIcon"
+            android:layout_toRightOf="@+id/imageViewIcon"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/create_title"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/title" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/subtitle_top_margin"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
+                android:text="@string/create_subtitle"
+                android:textColor="@color/color_green"
+                android:textSize="@dimen/create_subtitle" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/textViewSubtitle1"
+                android:background="@color/color_orange" />
+
+            <view
+                android:id="@+id/view"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/view2"
+                app:color="@color/color_orange"
+                app:orientation="down" />
+
+            <view
+                android:id="@+id/triangleAbout"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/view"
+                android:visibility="invisible"
+                app:color="@color/color_orange"
+                app:margin="16dp"
+                app:orientation="right" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/triangleAbout"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/view"
+                android:layout_toEndOf="@+id/triangleAbout"
+                android:layout_toRightOf="@+id/triangleAbout"
+                android:layout_toStartOf="@+id/view"
+                android:background="@color/color_transparent"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/create_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/color_orange"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/create_text" />
+
+            <view
+                android:id="@+id/triangleLastName"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/triangleAbout"
+                android:layout_marginTop="8dp"
+                android:visibility="invisible"
+                app:color="@color/color_orange"
+                app:margin="16dp"
+                app:orientation="right" />
+
+            <EditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/triangleLastName"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/triangleLastName"
+                android:layout_toEndOf="@+id/triangleLastName"
+                android:layout_toRightOf="@+id/triangleLastName"
+                android:layout_toStartOf="@+id/view"
+                android:background="@color/color_transparent"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/create_last_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/color_orange"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/create_text" />
+
+            <view
+                android:id="@+id/triangleGenre"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/triangleLastName"
+                android:layout_marginTop="8dp"
+                android:visibility="invisible"
+                app:color="@color/color_orange"
+                app:margin="16dp"
+                app:orientation="right" />
+
+            <EditText
+                android:id="@+id/editTextGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/triangleGenre"
+                android:layout_alignTop="@+id/triangleGenre"
+                android:layout_toEndOf="@+id/triangleGenre"
+                android:layout_toRightOf="@+id/triangleGenre"
+                android:background="@color/color_transparent"
+                android:enabled="false"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/create_genre"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/create_text" />
+
+            <view
+                android:id="@+id/triangleId"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/triangleGenre"
+                android:layout_marginTop="8dp"
+                android:visibility="invisible"
+                app:color="@color/color_orange"
+                app:margin="16dp"
+                app:orientation="right" />
+
+            <EditText
+                android:id="@+id/editTextId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/triangleId"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/triangleId"
+                android:layout_toEndOf="@+id/triangleId"
+                android:layout_toRightOf="@+id/triangleId"
+                android:layout_toStartOf="@+id/view"
+                android:background="@color/color_transparent"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/create_id"
+                android:inputType="number"
+                android:textColor="@color/color_orange"
+                android:textColorHint="@color/color_gray"
+                android:textSize="@dimen/create_text" />
+
+            <Button
+                android:id="@+id/buttonCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageButtonOk"
+                android:layout_alignTop="@+id/imageButtonOk"
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@+id/imageButtonOk"
+                android:layout_toStartOf="@+id/imageButtonOk"
+                android:background="@color/color_transparent"
+                android:fontFamily="sans-serif-light"
+                android:onClick="onButtonCreateClick"
+                android:text="@string/create"
+                android:textColor="@color/button_text_gray_orange"
+                android:textSize="@dimen/login_button" />
+
+            <ImageButton
+                android:id="@+id/imageButtonOk"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/editTextId"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_transparent"
+                android:onClick="onButtonCreateClick"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_create" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/editTextGenre"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/editTextGenre"
+                android:background="@color/color_transparent"
+                android:checked="true"
+                android:fontFamily="sans-serif-light"
+                android:onClick="onButtonGenreMClick"
+                android:textColor="@color/button_text_gray_orange"
+                android:textOff="@string/create_m"
+                android:textOn="@string/create_m"
+                android:textSize="@dimen/create_genre_text" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/toggleButtonM"
+                android:layout_alignTop="@+id/toggleButtonM"
+                android:layout_toEndOf="@+id/toggleButtonM"
+                android:layout_toRightOf="@+id/toggleButtonM"
+                android:background="@color/color_transparent"
+                android:checked="false"
+                android:fontFamily="sans-serif-light"
+                android:onClick="onButtonGenreFClick"
+                android:textColor="@color/button_text_gray_orange"
+                android:textOff="@string/create_f"
+                android:textOn="@string/create_f"
+                android:textSize="@dimen/create_genre_text" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

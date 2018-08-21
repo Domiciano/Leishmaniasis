@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.TroncoActivity"
+    android:background="@color/orange_background"
+    android:id="@+id/root">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_manoizq"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="110px"
+            android:gravity="center_horizontal"
+
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lesiones mano izquierda"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textColor="#FFF"
+                    android:textSize="11pt"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#FFF"
+                    />
+            </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/region_mano_izq">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="50px"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/img_mano_frente"
+                        android:id="@+id/mano_izq_frente"
+                        android:scaleX="-1"
+                        />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/img_mano_atras"
+                        android:id="@+id/mano_izq_espalda"
+                        android:layout_marginLeft="40dp"
+                        android:scaleX="-1"
+                        />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp121"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp107"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp122"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp108"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp123"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp109"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp124"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp110"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp125"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp111"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp126"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp112"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp127"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp113"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp128"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp114"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp129"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp115"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp130"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp116"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp131"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp117"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:scaleX="-1"
+                    android:id="@+id/bp132"
+                    android:background="@drawable/bp118"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp133"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp119"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/bp134"
+                    android:scaleX="-1"
+                    android:background="@drawable/bp120"
+                    android:visibility="gone"/>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="9pt"
+                android:layout_marginTop="40px"
+                android:text="Lugar aproximado de la lesión"/>
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="@color/botones_background"
+            android:textSize="10pt"
+            android:textColor="#FFF"
+            android:height="110px"
+            android:layout_height="110px"
+            android:text="VOLVER"
+            android:layout_alignParentBottom="true"
+            android:onClick="doVolver"
+            android:gravity="center"
+
+            android:id="@+id/mano_izq_boton_volver"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

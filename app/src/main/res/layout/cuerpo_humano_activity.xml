@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@color/orange_background">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_cuerpo_humano"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="110px">
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="8pt"
+                        android:textStyle="italic"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        android:id="@+id/subtitulo_cuerpo"
+                        android:text="Seleccione la zona del cuerpo donde se encuentran ubicadas las lesiones para fotografiarla."/>
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="250dp"
+                        android:background="@drawable/cuerpo"
+                        android:id="@+id/cuerpo"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_cabeza"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_tronco"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_brazo_der"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_brazo_izq"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_pierna_izq"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_pierna_der"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_mano_der"
+                    android:background="@drawable/bt_lesion"/>
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:id="@+id/lesion_mano_izq"
+                    android:background="@drawable/bt_lesion"/>
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick1"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick2"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick3"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick4"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick5"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick6"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick7"/>
+
+            <View
+                android:layout_width="200px"
+                android:layout_height="2px"
+                android:background="#908373"
+                android:id="@+id/stick8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cabeza"
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_cabeza"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tronco"
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_tronco"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brazo Izq."
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_brazo_izquierdo"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brazo Der."
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_brazo_derecho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pierna Izq."
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_pierna_izquierda"/>
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pierna Der."
+            android:textColor="#FFF"
+            android:textStyle="italic"
+            android:textSize="8pt"
+            android:id="@+id/label_pierna_derecha"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mano Der."
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_mano_derecha"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mano Izq."
+                android:textColor="#FFF"
+                android:textStyle="italic"
+                android:textSize="8pt"
+                android:id="@+id/label_mano_izquierda"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/botones_cuerpo">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="AÑADIR NUEVA LESIÓN"
+                    android:background="@color/botones_background"
+                    android:textColor="#FFF"
+                    android:textSize="8pt"
+                    android:paddingLeft="40px"
+                    android:paddingRight="40px"
+                    android:layout_marginBottom="40px"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="addNewLesion"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="110px"
+                    android:text="TERMINAR TOMA DE FOTOS"
+                    android:background="@color/botones_background"
+                    android:textColor="#FFF"
+                    android:textSize="10pt"
+                    android:gravity="center"
+                    android:onClick="terminarToma"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="TriangleView">
+        <attr name="color" format="color" />
+        <attr name="margin" format="dimension" />
+        <attr name="orientation" format="string" />
+        <attr name="only_show_when_selected" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_transparent">#00000000</color>
+    <color name="color_black">#ff000000</color>
+    <color name="color_darkgray">#5d5d5d</color>
+    <color name="color_gray">#999999</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_orange">#ff8800</color>
+    <color name="color_button_orange">#ff6600</color>
+    <color name="color_green">#009999</color>
+    <color name="color_yellow">#ffbb33</color>
+    <color name="color_pink_actividades">#f98585</color>
+    <color name="color_pink_actividades_2">#ef617a</color>
+    <color name="color_yellow_antecedentes">#ffcc33</color>
+    <color name="color_ocre_antecedentes">#cc7722</color>
+    <color name="color_red_manta">#cc0000</color>
+    <color name="color_blue_lesiones">#0099cc</color>
+    <color name="color_purple_lesiones">#A349A4</color>
+    <color name="color_orange_ulceras">#ff8800</color>
+    <color name="color_green_localizacion">#99cc00</color>
+    <color name="color_mark_localizacion_lesion">#ef617a</color>
+    <color name="color_light_green">#66c2c2</color>
+
+    <color name="colorPrimary">#141414</color>
+    <color name="colorPrimaryDark">#262626</color>
+    <color name="colorAccent">#E26100</color>
+    <color name="edit_text_login">#252525</color>
+    <color name="botones_background">#5D5D5D</color>
+    <color name="orange_background">#FF8800</color>
+
+    <color name="light_grey">#E5E5E5</color>
+    <color name="normal_text">#2D2D2D</color>
+    <color name="light_text">#A5A5A5</color>
+    <color name="dialog_background">#FFFBF8</color>
+    <color name="background_dia_futuro">#EA9733</color>
+    <color name="letra_dia_futuro">#EEAC5C</color>
+</resources>

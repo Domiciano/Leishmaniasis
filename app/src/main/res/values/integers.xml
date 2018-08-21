@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ulceras_si">1</integer>
+    <integer name="ulceras_no">0</integer>
+    <integer name="lesiones_si">0</integer>
+    <integer name="lesiones_no">1</integer>
+    <integer name="actividades_si">1</integer>
+    <integer name="actividades_no">0</integer>
+    <integer name="antecedentes_si">0</integer>
+    <integer name="antecedentes_no">3</integer>
+    <integer name="manta_si">3</integer>
+    <integer name="manta_no">0</integer>
+    <integer name="localizacion_brazos_si">3</integer>
+    <integer name="localizacion_brazos_no_piernas_no">2</integer>
+    <integer name="localizacion_brazos_no_piernas_si">1</integer>
+
+    <integer name="hisopo_si">0</integer>
+    <integer name="hisopo_no">1</integer>
+</resources>

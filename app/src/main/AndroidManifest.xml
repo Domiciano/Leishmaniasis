@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="i2t.cideim">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/elemento"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".leishmaniasis.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".leishmaniasis.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".leishmaniasis.CreateUserActivity"
+            android:label="@string/title_activity_create_user"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".leishmaniasis.PatientsActivity"
+            android:label="@string/title_activity_patients"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".leishmaniasis.CreatePatientActivity"
+            android:label="@string/title_activity_create_patient"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".leishmaniasis.EvaluationActivity"
+            android:label="@string/title_activity_evaluation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".leishmaniasis.QuestionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_question"
+            android:screenOrientation="portrait"></activity>
+
+        <service
+            android:name=".leishmaniasis.SyncService"
+            android:enabled="true"
+            android:exported="false"></service>
+
+        <activity
+            android:name=".leishmaniasis.ViewPatientActivity"
+            android:label="@string/title_activity_view_patient"></activity>
+        <activity
+            android:name=".bodylocations.CuerpoHumanoActivity"
+            android:label="CuerpoHumanoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".bodylocations.TroncoActivity"
+            android:label="TroncoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.CabezaActivity"
+            android:label="CabezaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.BrazoDerechoActivity"
+            android:label="BrazoDerechoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.BrazoIzquierdoActvity"
+            android:label="BrazoIzquierdoActvity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.PiernaDerechaActivity"
+            android:label="PiernaDerechaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.PiernaIzquierdaActivity"
+            android:label="PiernaIzquierdaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.ManoIzquierdaActivity"
+            android:label="ManoIzquierdaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.ManoDerechaActivity"
+            android:label="ManoDerechaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.VistaPreviaFotoActivity"
+            android:label="VistaPreviaFotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bodylocations.ThumbnailsActivity"
+            android:label="ThumbnailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.CuerpoHumanoHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.CabezaHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.ManoIzquierdaHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.ManoDerechaHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.PiernaIzquierdaHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.PiernaDerechaHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.TroncoHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.BrazoIzquierdoHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".hisopo.BrazoDerechoHisopoActivity"
+            android:label="Cuerpo Humano"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".hisopo.PreguntaHisopoActivity"
+            android:label="Numero de hisopos"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+    </application>
+
+</manifest>

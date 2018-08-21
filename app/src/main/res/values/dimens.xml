@@ -1,0 +1,61 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!-- Misc -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="help_icons_size">48dp</dimen>
+    <dimen name="icons_size">44dp</dimen>
+    <dimen name="icons_top_margin">4dp</dimen>
+    <dimen name="title">25sp</dimen>
+    <dimen name="subtitle_top_margin">8dp</dimen>
+    <!-- Login -->
+    <dimen name="login_text">45sp</dimen>
+    <dimen name="login_button">35sp</dimen>
+    <!-- Create user -->
+    <dimen name="create_subtitle">45sp</dimen>
+    <dimen name="create_text">45sp</dimen>
+    <dimen name="create_button">35sp</dimen>
+    <dimen name="create_genre_text">40sp</dimen>
+    <!-- Patients -->
+    <dimen name="patients_subtitle">45sp</dimen>
+    <dimen name="patients_button">35sp</dimen>
+    <dimen name="patients_list_item">20sp</dimen>
+    <!-- Create patient -->
+    <dimen name="create_patient_subtitle">35sp</dimen>
+    <dimen name="create_patient_text">25sp</dimen>
+    <dimen name="create_patient_genre_text">20sp</dimen>
+    <!--+++++++++add+++++++++++++++++-->
+    <dimen name="create_patient_doc_text">20sp</dimen>
+    <!--+++++++++add+++++++++++++++++-->
+    <!-- Evaluations -->
+    <dimen name="evaluation_patient_name">20sp</dimen>
+    <dimen name="evaluation_button">86dp</dimen>
+    <dimen name="evaluation_check_marker">20dp</dimen>
+    <dimen name="evaluation_check_marker_margin_top">33dp</dimen>
+    <dimen name="evaluation_check_marker_margin_right">-4dp</dimen>
+    <dimen name="evaluation_button_margin_center">43dp</dimen>
+    <dimen name="evaluation_button_margin_vertical">-10dp</dimen>
+    <dimen name="evaluation_button_margin_base_horizontal">-20dp</dimen>
+    <dimen name="evaluation_button_margin_base_vertical">-5dp</dimen>
+    <dimen name="evaluation_score">20sp</dimen>
+    <dimen name="evaluation_score_detail">16sp</dimen>
+    <dimen name="evaluation_save_button">20sp</dimen>
+    <!-- Questions -->
+    <dimen name="question_content_height">150dp</dimen>
+    <dimen name="question_clue_text">16sp</dimen>
+    <dimen name="question_answer_text">20sp</dimen>
+    <dimen name="question_answer_button">100dp</dimen>
+    <dimen name="question_answer_text_margin">44dp</dimen>
+    <dimen name="question_answer_button_margin">-32dp</dimen>
+    <dimen name="question_media_margin_top">55dp</dimen>
+    <!-- Question localizacion -->
+    <dimen name="location_body">350dp</dimen>
+    <dimen name="location_head">52dp</dimen>
+    <dimen name="location_body_width">65dp</dimen>
+    <dimen name="location_arms_width">30dp</dimen>
+    <dimen name="location_legs_width">38dp</dimen>
+    <dimen name="location_ulcera">28dp</dimen>
+    <!-- Dialogs -->
+    <dimen name="dialog_title">25sp</dimen>
+    <dimen name="dialog_text">20sp</dimen>
+</resources>

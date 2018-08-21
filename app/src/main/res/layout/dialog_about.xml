@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_green"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/textViewDialogTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:text="@string/about_title"
+                android:textColor="@color/color_green"
+                android:textSize="@dimen/dialog_title" />
+
+            <TextView
+                android:id="@+id/textViewDialogDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewDialogTitle"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/about_description"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/dialog_text" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/textViewDialogDescription"
+                android:layout_marginTop="4dp"
+                android:background="@color/color_orange" />
+
+            <view
+                android:id="@+id/view"
+                class="i2t.cideim.custom.TriangleView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignEnd="@+id/textView2"
+                android:layout_below="@+id/view2"
+                app:color="@color/color_orange"
+                app:orientation="down" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/view"
+                android:text="@string/about_faq"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/dialog_title" />
+
+            <ListView
+                android:id="@+id/listViewAbout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/color_white"
+                android:choiceMode="singleChoice"
+                android:divider="@color/color_white"
+                android:dividerHeight="1dp"
+                android:listSelector="@color/color_transparent" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

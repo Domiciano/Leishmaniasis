@@ -1,0 +1,284 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="i2t.cideim.leishmaniasis.QuestionActivity$PlaceholderFragment">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_red_manta">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/question_manta_title"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/title" />
+
+        <ImageView
+            android:id="@+id/imageViewInfo"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/info"
+            android:src="@drawable/info"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/imageViewAbout"
+            android:layout_width="@dimen/help_icons_size"
+            android:layout_height="@dimen/help_icons_size"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/about"
+            android:src="@drawable/about"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/color_red_manta"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:layout_marginTop="9dp"
+                android:background="@color/color_white" />
+
+            <RelativeLayout
+                android:id="@+id/videoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp">
+
+                <Button
+                    android:id="@+id/videoView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/question_content_height"
+                    android:background="@color/color_red_manta"
+                    android:onClick="onButtonPlayPressed" />
+
+                <i2t.cideim.custom.TriangleView
+                    android:id="@+id/view4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:color="@color/color_white"
+                    app:orientation="right" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="9dp"
+                android:background="@color/color_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTriangles"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/linearLayoutContent"
+            android:background="@color/color_red_manta"
+            android:orientation="horizontal">
+
+            <i2t.cideim.custom.TriangleView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight=".33"
+                android:background="@color/color_red_manta"
+                app:color="@color/color_white"
+                app:orientation="up" />
+
+            <i2t.cideim.custom.TriangleView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight=".33"
+                android:background="@color/color_red_manta"
+                app:color="@color/color_white"
+                app:orientation="up" />
+
+            <i2t.cideim.custom.TriangleView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight=".33"
+                android:background="@color/color_red_manta"
+                app:color="@color/color_white"
+                app:orientation="up" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutClues"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayoutTriangles"
+            android:background="@color/color_red_manta"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewClue1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight=".33"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:text="@string/question_manta_clue1"
+                android:textColor="@color/color_red_manta"
+                android:textSize="@dimen/question_clue_text" />
+
+            <TextView
+                android:id="@+id/textViewClue2"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight=".33"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:text="@string/question_manta_clue2"
+                android:textColor="@color/color_red_manta"
+                android:textSize="@dimen/question_clue_text" />
+
+            <TextView
+                android:id="@+id/textViewClue3"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight=".33"
+                android:background="@color/color_white"
+                android:gravity="center"
+                android:lines="3"
+                android:text="@string/question_manta_clue3"
+                android:textColor="@color/color_red_manta"
+                android:textSize="@dimen/question_clue_text" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayoutClues">
+
+            <TextView
+                android:id="@+id/textViewText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/dummyView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/question_answer_text_margin"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/question_select_answer"
+                android:textColor="@color/color_darkgray"
+                android:textSize="@dimen/question_answer_text" />
+
+            <View
+                android:id="@+id/dummyView2"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <ToggleButton
+                android:id="@+id/buttonYes"
+                android:layout_width="@dimen/question_answer_button"
+                android:layout_height="@dimen/question_answer_button"
+                android:layout_alignBottom="@+id/dummyView2"
+                android:layout_marginBottom="@dimen/question_answer_button_margin"
+                android:layout_toLeftOf="@+id/dummyView2"
+                android:layout_toStartOf="@+id/dummyView2"
+                android:background="@drawable/button_yes"
+                android:onClick="onButtonYesClick"
+                android:textOff=""
+                android:textOn="" />
+
+            <ToggleButton
+                android:id="@+id/buttonNo"
+                android:layout_width="@dimen/question_answer_button"
+                android:layout_height="@dimen/question_answer_button"
+                android:layout_alignBottom="@+id/dummyView2"
+                android:layout_marginBottom="@dimen/question_answer_button_margin"
+                android:layout_toEndOf="@+id/dummyView2"
+                android:layout_toRightOf="@+id/dummyView2"
+                android:background="@drawable/button_no"
+                android:onClick="onButtonNoClick"
+                android:textOff=""
+                android:textOn="" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="@dimen/question_answer_button"
+                android:layout_height="@dimen/question_answer_button"
+                android:layout_below="@+id/dummyView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/question_answer_button_margin"
+                android:background="@drawable/button_save"
+                android:onClick="onButtonSaveClick"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
