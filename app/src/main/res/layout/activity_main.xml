@@ -144,6 +144,7 @@
                 android:inputType="number"
                 android:textColor="@color/color_orange"
                 android:textColorHint="@color/color_gray"
+                android:visibility="gone"
                 android:textSize="@dimen/login_text" />
 
             <Button
@@ -152,7 +153,7 @@
                 android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/editTextId"
+                android:layout_below="@+id/editTextName"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/button_add"
                 android:onClick="onButtonAddClick" />

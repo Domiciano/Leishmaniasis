@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 
     private TextView textViewTitle;
     private EditText editTextName;
-    private EditText editTextId;
+    //private EditText editTextId;
     private TriangleView triangleName;
     private TriangleView triangleId;
 
@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
         editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextId = (EditText) findViewById(R.id.editTextId);
+        //editTextId = (EditText) findViewById(R.id.editTextId);
         triangleName = (TriangleView) findViewById(R.id.triangleAbout);
         triangleId = (TriangleView) findViewById(R.id.triangleId);
 
@@ -64,12 +64,14 @@ public class MainActivity extends Activity {
             }
         });
 
+        /*
         editTextId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 triangleId.setVisibility(b ? View.VISIBLE : View.INVISIBLE);
             }
         });
+        */
 
         db = new DatabaseHandler(this);
     }
@@ -82,16 +84,16 @@ public class MainActivity extends Activity {
 
     /* Performs a simple login procedure, that consist in comparing the name and the id of the user */
     public void onButtonEnterClick(View view) {
-        LiderComunitario user = db.getMinimizedUser(editTextId.getText().toString());
+        LiderComunitario user = db.getMinimizedUser(editTextName.getText().toString());
         if (user != null) {
-            String name = editTextName.getText().toString().toLowerCase();
-            if (user.getName().toLowerCase().equals(name)) {
-                Intent intent = new Intent(this, PatientsActivity.class);
-                intent.putExtra("userId", user.getIdentification());
-                startActivity(intent);
-            } else {
-                textViewTitle.setText(R.string.login_invalid_data);
-            }
+            //String name = editTextName.getText().toString().toLowerCase();
+            //if (user.getName().toLowerCase().equals(name)) {
+            Intent intent = new Intent(this, PatientsActivity.class);
+            intent.putExtra("userId", user.getIdentification());
+            startActivity(intent);
+            //} else {
+            //    textViewTitle.setText(R.string.login_invalid_data);
+            //}
         } else {
             textViewTitle.setText(R.string.login_user_does_not_exist);
         }

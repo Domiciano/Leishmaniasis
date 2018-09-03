@@ -112,9 +112,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /* Creates the SQLite database */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
-                + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_USER_NAME + " TEXT,"
-                + KEY_USER__LAST_NAME + " TEXT," + KEY_USER_GENRE + " TEXT" + ")";
+            String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+                    + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_USER_NAME + " TEXT,"
+                    + KEY_USER__LAST_NAME + " TEXT," + KEY_USER_GENRE + " TEXT" + ")";
 
         String CREATE_PATIENTS_TABLE = "CREATE TABLE " + TABLE_PATIENTS + "("
                 + KEY_PATIENT_UUID + " TEXT PRIMARY KEY," + KEY_PATIENT_ID + " TEXT," + KEY_PATIENT_NAME
