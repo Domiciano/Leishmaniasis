@@ -7,6 +7,7 @@ import org.simpleframework.xml.Root;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Leonardo and Juan David.
@@ -20,6 +21,7 @@ public class LiderComunitario extends DataXml {
     private static final long serialVersionUID = 1L;
     @Attribute(name = "xsi:type")
     private String classname = "LiderComunitarioXml";
+    private String id; // Password
     @Element(name = "Cedula")
     private String identification; // Password
     @Element(name = "Name")
@@ -32,6 +34,7 @@ public class LiderComunitario extends DataXml {
     private List<Patient> patientList;
 
     public LiderComunitario(String identification, String name, String lastName, char genre) {
+        this.id = UUID.randomUUID().toString();
         this.identification = identification;
         this.name = name;
         this.lastName = lastName;
@@ -40,6 +43,7 @@ public class LiderComunitario extends DataXml {
     }
 
     public LiderComunitario(String identification, String name) {
+        this.id = UUID.randomUUID().toString();
         this.identification = identification;
         this.name = name;
         this.patientList = new ArrayList<Patient>();
@@ -106,5 +110,13 @@ public class LiderComunitario extends DataXml {
     /* Adds a collection of patients to the patients list */
     public boolean addAllPatients(Collection<? extends Patient> patients) {
         return patientList.addAll(patients);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

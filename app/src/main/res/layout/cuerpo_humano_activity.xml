@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="110px">
+            android:layout_marginTop="64dp">
 
 
             <RelativeLayout
@@ -236,7 +236,7 @@
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="100px"
+                    android:layout_height="45dp"
                     android:text="AÑADIR NUEVA LESIÓN"
                     android:background="@color/botones_background"
                     android:textColor="#FFF"
@@ -249,7 +249,7 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="110px"
+                    android:layout_height="60dp"
                     android:text="TERMINAR TOMA DE FOTOS"
                     android:background="@color/botones_background"
                     android:textColor="#FFF"

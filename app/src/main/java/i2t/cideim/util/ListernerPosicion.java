@@ -15,12 +15,11 @@ import i2t.cideim.leishmaniasis.CreatePatientActivity;
  */
 public class ListernerPosicion implements LocationListener {
 
+    public double lat;
+    public double lng;
 
-    CreatePatientActivity root;
+    public ListernerPosicion(){
 
-
-    public ListernerPosicion(CreatePatientActivity root){
-        this.root = root;
     }
 
     boolean firstTime = true;
@@ -28,10 +27,11 @@ public class ListernerPosicion implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
             java.text.NumberFormat nf = new DecimalFormat("#0.000");
-            root.tv_location.setText("Coordenada: \nLat: " + nf.format(location.getLatitude()) + ", Lng: " + nf.format(location.getLongitude()) + "\n"
-                    + "Exacto a " + location.getAccuracy() + " metros");
+            //root.tv_location.setText("Coordenada: \nLat: " + nf.format(location.getLatitude()) + ", Lng: " + nf.format(location.getLongitude()) + "\n"
+            //        + "Exacto a " + location.getAccuracy() + " metros");
+            lat = location.getLatitude();
+            lng = location.getLongitude();
             firstTime = false;
-
     }
 
     @Override

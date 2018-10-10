@@ -34,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final int UNKNOWN_ERROR = 99;
 
     // Database
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
     private static final String DATABASE_NAME = "leishmaniasis";
 
     // Users table
@@ -62,6 +62,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PATIENT_CONTACT_LAST_NAME = "contact_last_name";
     private static final String KEY_PATIENT_CONTACT_PHONE = "contact_phone_number";
     private static final String KEY_PATIENT_CONTACT_ADDRESS = "contact_address";
+    private static final String KEY_PATIENT_LAT = "latitude";
+    private static final String KEY_PATIENT_LNG = "longitude";
     private static final String KEY_PATIENT_INJURY_WEEKS = "injury_weeks";
 
     // Evaluations table
@@ -91,14 +93,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ULCERIMG_IMGUUID = "imguuid";
     private static final String KEY_ULCERIMG_INJURIESPERLOCATION = "injuriesperlocation";
 
-
     // Users table
     private static final String TABLE_HISOPO = "hisopo";
     private static final String KEY_HISOPO_UUID = "uuid";
     private static final String KEY_HISOPO_BODYLOCATION = "bodylocation";
     private static final String KEY_HISOPO_DATE = "date";
     private static final String KEY_HISOPO_MUESTRAS = "muestras";
-
 
     // Relationships
     private static final String FK_USER = "user";
@@ -127,6 +127,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_PATIENT_CONTACT_LAST_NAME + " TEXT,"
                 + KEY_PATIENT_CONTACT_PHONE + " TEXT,"
                 + KEY_PATIENT_CONTACT_ADDRESS + " TEXT,"
+                + KEY_PATIENT_LAT + " TEXT,"
+                + KEY_PATIENT_LNG + " TEXT,"
                 + KEY_PATIENT_INJURY_WEEKS + " INTEGER," + FK_USER + " TEXT"
                 + ")";
 
@@ -265,6 +267,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PATIENT_CONTACT_LAST_NAME, patient.getContactLastName());
         values.put(KEY_PATIENT_CONTACT_PHONE, patient.getContactPhone());
         values.put(KEY_PATIENT_CONTACT_ADDRESS, patient.getContactAddress());
+        values.put(KEY_PATIENT_LAT, patient.getLat());
+        values.put(KEY_PATIENT_LNG, patient.getLng());
         values.put(KEY_PATIENT_INJURY_WEEKS, patient.getInjuryWeeks());
         values.put(FK_USER, userId);
         return add(TABLE_PATIENTS, values);
@@ -299,7 +303,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_PATIENT_DOCUMENT_TYPE, KEY_PATIENT_GENRE, KEY_PATIENT_ADDRESS, KEY_PATIENT_PHONE,
                         KEY_PATIENT_BIRTHDAY, KEY_PATIENT_PROVINCE, KEY_PATIENT_MUNICIPALITY, KEY_PATIENT_LANE,
                         KEY_PATIENT_CONTACT_NAME, KEY_PATIENT_CONTACT_LAST_NAME, KEY_PATIENT_CONTACT_PHONE,
-                        KEY_PATIENT_CONTACT_ADDRESS, KEY_PATIENT_INJURY_WEEKS},
+                        KEY_PATIENT_CONTACT_ADDRESS, KEY_PATIENT_INJURY_WEEKS, KEY_PATIENT_LAT, KEY_PATIENT_LNG},
                 KEY_PATIENT_UUID + "=?", new String[]{patientUUID}, null, null, null, null
         );
         Patient patient = null;
@@ -308,7 +312,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     cursor.getString(3), cursor.getString(4), cursor.getString(5).charAt(0),
                     cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
                     cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                    cursor.getString(14), cursor.getString(15), cursor.getInt(16));
+                    cursor.getString(14), cursor.getString(15), cursor.getInt(16),
+                    Double.parseDouble(cursor.getString(17)), Double.parseDouble(cursor.getString(18)));
 
             Evaluation latestEvaluation = getFullLatestEvaluation(patientUUID);
             if (latestEvaluation != null) {
@@ -427,7 +432,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_PATIENT_DOCUMENT_TYPE, KEY_PATIENT_GENRE, KEY_PATIENT_ADDRESS, KEY_PATIENT_PHONE,
                         KEY_PATIENT_BIRTHDAY, KEY_PATIENT_PROVINCE, KEY_PATIENT_MUNICIPALITY, KEY_PATIENT_LANE,
                         KEY_PATIENT_CONTACT_NAME, KEY_PATIENT_CONTACT_LAST_NAME, KEY_PATIENT_CONTACT_PHONE,
-                        KEY_PATIENT_CONTACT_ADDRESS, KEY_PATIENT_INJURY_WEEKS},
+                        KEY_PATIENT_CONTACT_ADDRESS, KEY_PATIENT_INJURY_WEEKS, KEY_PATIENT_LAT, KEY_PATIENT_LNG},
                 FK_USER + "=?", new String[]{userId}, null, null, null, null
         );
         if (cursor != null && cursor.moveToFirst()) {
@@ -436,7 +441,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         cursor.getString(3), cursor.getString(4), cursor.getString(5).charAt(0),
                         cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),
                         cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getString(15),
-                        cursor.getInt(16));
+                        cursor.getInt(16), Double.parseDouble(cursor.getString(17)),
+                        Double.parseDouble(cursor.getString(18)));
+
                 patient.addAllEvaluations(getEvaluationsForSync(cursor.getString(0), userId, patient.getIdentification()));
                 patients.add(patient);
             } while (cursor.moveToNext());
@@ -494,7 +501,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    private List<UlcerImg> getAllUlcerImgByEval(String uuidNumber) {
+    public List<UlcerImg> getAllUlcerImgByEval(String uuidNumber) {
         ArrayList<UlcerImg> imagenes = new ArrayList<>();
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -604,5 +611,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int getNumeroLesiones(String evalUID) {
+        List<UlcerImg> imagenes= getAllUlcerImgByEval(evalUID);
+        ArrayList<String> diff = new ArrayList<>();
+        if(imagenes.size()==0) return 0;
+        if(imagenes.size()==1) return 1;
+        diff.add(imagenes.get(0).getBodyLocation());
+        for (int i=1 ; i<imagenes.size() ; i++){
+            if( !diff.contains(imagenes.get(i).getBodyLocation()) ){
+                diff.add(imagenes.get(i).getBodyLocation());
+            }
+        }
+        return diff.size();
+    }
 
+    public int getAllHisopos(String eval) {
+        List<Hisopo> hisopos = getAllHisoposByEval(eval);
+
+        return -1;
+    }
 }

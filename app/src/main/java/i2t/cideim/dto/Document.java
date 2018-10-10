@@ -35,6 +35,6 @@ public class Document {
     public int numeroTotalLesiones;
     public int numeroHisopos;
 
-    public List<UlcerImg> fotoLesiones;
-    public Patient patient;
+    public List<UlcerImgDTO> fotoLesiones;
+    public PatientDTO patient;
 }

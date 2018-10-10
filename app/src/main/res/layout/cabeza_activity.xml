@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="110px"
+            android:layout_marginTop="64dp"
             android:gravity="center_horizontal"
 
             >
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="50px"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     >
 
@@ -245,14 +245,13 @@
             android:background="@color/botones_background"
             android:textSize="10pt"
             android:textColor="#FFF"
-            android:height="110px"
-            android:layout_height="110px"
+            android:layout_height="60dp"
             android:text="VOLVER"
             android:layout_alignParentBottom="true"
             android:onClick="doVolver"
             android:id="@+id/cabeza_boton_volver"
             android:gravity="center"
-            android:visibility="gone"
+            android:visibility="visible"
             />
 
     </RelativeLayout>

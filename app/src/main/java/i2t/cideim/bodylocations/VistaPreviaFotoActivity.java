@@ -135,7 +135,6 @@ public class VistaPreviaFotoActivity extends AppCompatActivity {
     public void loadFoto(){
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
-        //b = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/LeishST/b.png");
         b = ImageUtils.decodeSampledBitmapFromResource(foto_path, 200,200);
 
         double proporcion = (double) b.getWidth()/b.getHeight();

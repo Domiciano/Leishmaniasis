@@ -5,15 +5,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.File;
+
 import i2t.cideim.R;
 import i2t.cideim.custom.TriangleView;
 import i2t.cideim.data.DatabaseHandler;
 import i2t.cideim.model.LiderComunitario;
+import i2t.cideim.util.LeishConstants;
 
 /**
  * Created by Leonardo.
@@ -49,6 +54,8 @@ public class MainActivity extends Activity {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.CAMERA,
             }, 11);
+        }else{
+            crearCarpetaFotos();
         }
 
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
@@ -74,6 +81,11 @@ public class MainActivity extends Activity {
         */
 
         db = new DatabaseHandler(this);
+    }
+
+    private void crearCarpetaFotos() {
+        File carpeta = new File(Environment.getExternalStorageDirectory()+"/"+ LeishConstants.FOLDER);
+        if(!carpeta.exists()) carpeta.mkdirs();
     }
 
     /* Shows an activity to create a new user */
@@ -109,5 +121,23 @@ public class MainActivity extends Activity {
     public void onInfoButtonPressed(View view) {
         InfoDialogFragment dialog = new InfoDialogFragment();
         dialog.show(getFragmentManager(), "Info");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == 11){
+            boolean allPermissionsGranted = true;
+            for(int i=0 ; i<grantResults.length ; i++){
+                if(grantResults[i] == PackageManager.PERMISSION_DENIED){
+                    allPermissionsGranted = false;
+                    break;
+                }
+            }
+
+            if(allPermissionsGranted){
+                crearCarpetaFotos();
+            }
+
+        }
     }
 }

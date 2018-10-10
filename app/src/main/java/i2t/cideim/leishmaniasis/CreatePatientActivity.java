@@ -309,7 +309,7 @@ public class CreatePatientActivity extends Activity {
         });
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new ListernerPosicion(this);
+        locationListener = new ListernerPosicion();
         knowIfLocationAreEnabled();
         startLocation();
 
@@ -451,10 +451,12 @@ public class CreatePatientActivity extends Activity {
                         String contactLastName = editTextContactLastName.getText().toString().toUpperCase();
                         String contactPhone = editTextContactPhone.getText().toString().toUpperCase();
                         String contactAddress = editTextContactAddress.getText().toString().toUpperCase();
+                        double lat = locationListener.lat;
+                        double lng = locationListener.lng;
 
                         Patient patient = new Patient(identification, name, lastName, documentType, genre, address,
                                 phone, birthday, department, municipality, lane, contactName, contactLastName, contactPhone,
-                                contactAddress, injury_weeks);
+                                contactAddress, injury_weeks, lat, lng);
                         int result = db.addPatient(patient, userId);
                         if (result == DatabaseHandler.SUCCESS) {
                             CreatePatientActivity.super.onBackPressed();

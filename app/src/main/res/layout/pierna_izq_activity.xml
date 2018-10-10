@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".bodylocations.TroncoActivity"
     android:background="@color/orange_background"
-    android:id="@+id/root">
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.TroncoActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_piernaizq"
@@ -15,231 +15,227 @@
         android:layout_height="@dimen/abc_action_bar_default_height_material"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        />
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="110px"
+            android:layout_marginTop="64dp"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
 
             >
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lesiones pierna izquierdo"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:textStyle="bold|italic"
+                    android:text="Lesiones pierna izquierdo"
                     android:textColor="#FFF"
-                    android:textSize="11pt"/>
+                    android:textSize="11pt"
+                    android:textStyle="bold|italic" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="#FFF"
-                    />
+                    android:background="#FFF" />
             </LinearLayout>
 
 
             <RelativeLayout
+                android:id="@+id/region_pierna_izq"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/region_pierna_izq">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="50px"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/pierna_izq_frente"
                         android:layout_width="40dp"
                         android:layout_height="200dp"
                         android:background="@drawable/img_pierna_frente"
-                        android:id="@+id/pierna_izq_frente"
-                        android:scaleX="-1"
-                        />
+                        android:scaleX="-1" />
 
                     <ImageView
+                        android:id="@+id/pierna_izq_espalda"
                         android:layout_width="40dp"
                         android:layout_height="200dp"
-                        android:background="@drawable/img_pierna_atras"
-                        android:id="@+id/pierna_izq_espalda"
                         android:layout_marginLeft="40dp"
-                        android:scaleX="-1"
-                        />
+                        android:background="@drawable/img_pierna_atras"
+                        android:scaleX="-1" />
 
 
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/bp91"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp91"
                     android:background="@drawable/bp75"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp92"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp92"
                     android:background="@drawable/bp76"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp93"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp93"
                     android:background="@drawable/bp77"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp94"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp94"
                     android:background="@drawable/bp78"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp95"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp95"
                     android:background="@drawable/bp79"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp96"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp96"
                     android:background="@drawable/bp80"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp97"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp97"
                     android:background="@drawable/bp81"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp98"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp98"
                     android:background="@drawable/bp82"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp99"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp99"
                     android:background="@drawable/bp83"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp100"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp100"
                     android:background="@drawable/bp84"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp101"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp101"
                     android:background="@drawable/bp85"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp102"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp102"
                     android:background="@drawable/bp86"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp103"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp103"
                     android:background="@drawable/bp87"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp104"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp104"
                     android:background="@drawable/bp88"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp105"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp105"
                     android:background="@drawable/bp89"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp106"
                     android:layout_width="20px"
                     android:layout_height="20px"
-                    android:id="@+id/bp106"
                     android:background="@drawable/bp90"
                     android:scaleX="-1"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="#FFF"
-                android:textStyle="italic"
-                android:textSize="9pt"
                 android:layout_marginTop="40px"
-                android:text="Lugar aproximado de la lesión"/>
-
+                android:gravity="center"
+                android:text="Lugar aproximado de la lesión"
+                android:textColor="#FFF"
+                android:textSize="9pt"
+                android:textStyle="italic" />
 
 
         </LinearLayout>
 
         <Button
-        android:layout_width="match_parent"
-        android:background="@color/botones_background"
-        android:textSize="10pt"
-        android:textColor="#FFF"
-        android:height="110px"
-        android:layout_height="110px"
-        android:text="VOLVER"
-        android:layout_alignParentBottom="true"
-        android:onClick="doVolver"
-        android:id="@+id/pierna_izq_boton_volver"
+            android:id="@+id/pierna_izq_boton_volver"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/botones_background"
             android:gravity="center"
-            />
+            android:onClick="doVolver"
+            android:text="VOLVER"
+            android:textColor="#FFF"
+            android:textSize="10pt" />
 
     </RelativeLayout>
 </RelativeLayout>

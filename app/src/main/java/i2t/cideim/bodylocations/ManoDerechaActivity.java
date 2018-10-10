@@ -46,6 +46,7 @@ import i2t.cideim.leishmaniasis.EvaluationActivity;
 import i2t.cideim.leishmaniasis.MainActivity;
 import i2t.cideim.R;
 import i2t.cideim.model.UlcerImg;
+import i2t.cideim.util.LeishConstants;
 
 
 /**
@@ -205,33 +206,11 @@ public class ManoDerechaActivity extends AppCompatActivity {
     File foto = null;
 
     public void openCamera(View view) {
-
         int id_zona = botones_lesion.get(view);
         PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("id_zona", id_zona).commit();
-        boolean bln_id_zona = PreferenceManager.getDefaultSharedPreferences(this).
-                getBoolean("BP" + id_zona, false);
-
-        if(bln_id_zona){
-
-            Intent i = new Intent(this, ThumbnailsActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
-            return;
-        }
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        String cedula = sp.getString("patientID", "UNKNOWN");
-        foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
-                .commit();
-
-        Uri uri = Uri.fromFile(foto);
-
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        startActivityForResult(i, 10);
-
+        Intent i = new Intent(this, ThumbnailsActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     @Override
@@ -461,7 +440,7 @@ public class ManoDerechaActivity extends AppCompatActivity {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             String cedula = sp.getString("patientID", "UNKNOWN");
             foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-            foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
+            foto = new File(Environment.getExternalStorageDirectory() + "/"+LeishConstants.FOLDER+"/" + foto_code + ".jpg");
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             preferences.edit().putString("last_foto", foto_code.toString())
                     .putInt("id_zona", id_zona).apply();
@@ -604,7 +583,7 @@ public class ManoDerechaActivity extends AppCompatActivity {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
                     String cedula = sp.getString("patientID", "UNKNOWN");
                     foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-                    foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
+                    foto = new File(Environment.getExternalStorageDirectory() + "/"+LeishConstants.FOLDER+"/" + foto_code + ".jpg");
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                     preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
                             .putInt("id_zona", id_zona).apply();

@@ -21,12 +21,23 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.UUID;
+
 import i2t.cideim.R;
 import i2t.cideim.custom.BroadcastConstants;
 import i2t.cideim.custom.PatientsListAdapter;
 import i2t.cideim.data.DatabaseHandler;
+import i2t.cideim.dto.Document;
+import i2t.cideim.dto.PatientDTO;
+import i2t.cideim.dto.UlcerImgDTO;
+import i2t.cideim.model.Evaluation;
 import i2t.cideim.model.LiderComunitario;
 import i2t.cideim.model.Patient;
+import i2t.cideim.model.UlcerImg;
 
 /**
  * Created by Leonardo.
@@ -174,6 +185,89 @@ public class PatientsActivity extends Activity {
         Log.e( "ALERTA","MODELO: "+g.toJson(syncUser) );
         serviceIntent.putExtra("user", syncUser);
         //startService(serviceIntent);
+        //LLENAR DOCUMENTOS
+        ArrayList<Document> documentos = new ArrayList<>();
+
+        SimpleDateFormat dateformatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        for(int paciente = 0 ; paciente<syncUser.getPatientList().size() ; paciente++){
+            //Iteraciones por paciente
+            Patient patient = syncUser.getPatientList().get(paciente);
+            for (int evaluacion = 0 ; evaluacion<patient.getEvaluationList().size() ; evaluacion++){
+                //Iterciones por evaluacion
+                Evaluation evaluation = patient.getEvaluationList().get(evaluacion);
+                Document document = new Document();
+                document.id = UUID.randomUUID().toString();
+                document.lastDateUpdate = dateformatter.format(Calendar.getInstance().getTime());
+                document.pacienteId = patient.getUUIDNumber();
+                document.evaluadorId = syncUser.getId();
+                document.date = evaluation.getDate();
+
+                document.umbral = (int) evaluation.getUmbral();
+                document.puntaje = (int) evaluation.getScore();
+                document.injuryWeeks = patient.getInjuryWeeks();
+
+                document.lesionesAgrupadas = evaluation.isAgrupadas();
+                document.ulcerasBordesElevados = evaluation.isUlceras();
+                document.localizacionCabeza = evaluation.isLesionesH();
+                document.localizacionTronco = evaluation.isLesionesB();
+                document.localizacionBrazoIzquierdo = evaluation.isLesionesLA();
+                document.localizacionBrazoDerecho = evaluation.isLesionesRA();
+                document.localizacionPiernaIzquierda = evaluation.isLesionesLL();
+                document.localizacionPiernaDerecha= evaluation.isLesionesRL();
+                document.actividadRiesgo = evaluation.isActividades();
+                document.antecedentes= evaluation.isAntecedentes();
+                document.contactoManta= evaluation.isManta();
+
+                document.cantidadFoto = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
+                document.latitud = Double.parseDouble(patient.getLat());
+                document.longitud = Double.parseDouble(patient.getLng());;
+
+                document.numeroTotalLesiones = db.getNumeroLesiones(evaluation.getUUIDNumber());
+                document.numeroHisopos = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
+
+                List<UlcerImg> imgs = db.getAllUlcerImgByEval(evaluation.getUUIDNumber());
+                ArrayList<UlcerImgDTO> fotoLesiones = new ArrayList<>();
+                for(int j=0 ; j<imgs.size() ; j++){
+                    UlcerImgDTO img = new UlcerImgDTO();
+                    img.id = imgs.get(j).getImgUUID();
+                    img.filename = imgs.get(j).getImgUUID();
+                    img.imgDate = dateformatter.format(imgs.get(j).getImgDate());
+                    img.url = "-";
+                    img.patientId = patient.getUUIDNumber();
+                    img.raterId = syncUser.getId();
+                    img.evaluationId = evaluation.getUUIDNumber();
+
+                    fotoLesiones.add(img);
+                }
+                document.fotoLesiones = fotoLesiones;
+
+
+
+                PatientDTO patientDTO = new PatientDTO();
+                patientDTO.id = patient.getUUIDNumber();
+                patientDTO.cedula = patient.getIdentification();
+                patientDTO.name= patient.getName();
+                patientDTO.lastName= patient.getLastName();
+                patientDTO.documentType= patient.getDocumentType();
+                patientDTO.gender= ""+patient.getGenre();
+                patientDTO.currentAddress= patient.getAddress();
+                patientDTO.phone= patient.getPhone();
+                patientDTO.birthday= patient.getBirthday();
+                patientDTO.province= patient.getProvince();
+                patientDTO.municipality= patient.getMunicipality();
+                patientDTO.lane= patient.getLane();
+                patientDTO.contactName= patient.getContactName();
+                patientDTO.contactLastName= patient.getContactLastName();
+                patientDTO.contactPhone= patient.getContactPhone();
+                patientDTO.contactCurrentAddress= patient.getContactAddress();
+                patientDTO.injuryWeeks = patient.getInjuryWeeks();
+
+                document.patient = patientDTO;
+                documentos.add(document);
+            }
+        }
+
+        Log.e( "ALERTA","DOC: "+g.toJson(documentos) );
     }
 
     // Broadcast receiver for receiving status updates from the SyncService

@@ -55,9 +55,12 @@ public class Patient extends DataXml {
     @Element(name = "InjuryWeeks")
     private int injuryWeeks;
 
+    private double lat;
+    private double lng;
+
     private List<Evaluation> evaluationList;
 
-    public Patient(String identification, String name, String lastName, String documentType, char genre, String address, String phone, String birthday, String province, String municipality, String lane, String contactName, String contactLastName, String contactPhone, String contactAddress, int injuryWeeks) {
+    public Patient(String identification, String name, String lastName, String documentType, char genre, String address, String phone, String birthday, String province, String municipality, String lane, String contactName, String contactLastName, String contactPhone, String contactAddress, int injuryWeeks, double lat, double lng) {
         this.UUIDNumber = UUID.randomUUID().toString();
         this.identification = identification;
         this.name = name;
@@ -75,10 +78,12 @@ public class Patient extends DataXml {
         this.contactPhone = contactPhone;
         this.contactAddress = contactAddress;
         this.injuryWeeks = injuryWeeks;
+        this.lat = lat;
+        this.lng = lng;
         this.evaluationList = new ArrayList<Evaluation>();
     }
 
-    public Patient(String uuid, String identification, String name, String lastName, String documentType, char genre, String address, String phone, String birthday, String province, String municipality, String lane, String contactName, String contactLastName, String contactPhone, String contactAddress, int injuryWeeks) {
+    public Patient(String uuid, String identification, String name, String lastName, String documentType, char genre, String address, String phone, String birthday, String province, String municipality, String lane, String contactName, String contactLastName, String contactPhone, String contactAddress, int injuryWeeks, double lat, double lng) {
         this.UUIDNumber = uuid;
         this.identification = identification;
         this.name = name;
@@ -97,6 +102,8 @@ public class Patient extends DataXml {
         this.contactAddress = contactAddress;
         this.injuryWeeks = injuryWeeks;
         this.evaluationList = new ArrayList<Evaluation>();
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public Patient(String uuid, String identification, String name, String lastName) {
@@ -272,5 +279,21 @@ public class Patient extends DataXml {
     /* Adds a collection of evaluations to the evaluations list */
     public boolean addAllEvaluations(Collection<? extends Evaluation> evaluations) {
         return evaluationList.addAll(evaluations);
+    }
+
+    public String getLat() {
+        return ""+lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return ""+lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

@@ -40,6 +40,7 @@ import i2t.cideim.leishmaniasis.MainActivity;
 import i2t.cideim.R;
 import i2t.cideim.thumbs.ThumbsAdapter;
 import i2t.cideim.util.ImageUtils;
+import i2t.cideim.util.LeishConstants;
 
 
 /**
@@ -67,7 +68,7 @@ public class ThumbnailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thumbnails_activity);
-        carpeta = new File(Environment.getExternalStorageDirectory()+"/LeishST");
+        carpeta = new File(Environment.getExternalStorageDirectory()+"/"+ LeishConstants.FOLDER);
         //db = new ManejadorBD(this);
 
         format_filter = new SimpleDateFormat("yyyy-MM-dd");
@@ -119,7 +120,7 @@ public class ThumbnailsActivity extends AppCompatActivity {
         display_height = displayMetrics.heightPixels;
         display_width = displayMetrics.widthPixels;
 
-        File carpeta = new File(Environment.getExternalStorageDirectory()+"/LeishST/");
+        File carpeta = new File(Environment.getExternalStorageDirectory()+"/"+LeishConstants.FOLDER+"/");
 
 
         adapter = new ThumbsAdapter(this);
@@ -233,7 +234,7 @@ public class ThumbnailsActivity extends AppCompatActivity {
 
     public void refresh(){
 
-        File carpeta = new File(Environment.getExternalStorageDirectory()+"/LeishST/");
+        File carpeta = new File(Environment.getExternalStorageDirectory()+"/"+LeishConstants.FOLDER+"/");
         adapter.clear();
         LoadThumbs hilo = new LoadThumbs();
         hilo.execute(carpeta);

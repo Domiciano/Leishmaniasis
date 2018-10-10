@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="80px"
+            android:layout_marginTop="64dp"
             android:layout_marginBottom="290px"
             >
 
@@ -81,7 +81,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="100px"
+                android:layout_height="45dp"
                 android:background="@color/botones_background"
                 android:layout_gravity="center"
                 android:textColor="#FFF"
@@ -98,7 +98,7 @@
             android:textColor="#FFF"
             android:background="@color/botones_background"
             android:textSize="10pt"
-            android:layout_height="110px"
+            android:layout_height="60dp"
             android:text="VOLVER"
             android:onClick="doVolver"
             android:gravity="center"

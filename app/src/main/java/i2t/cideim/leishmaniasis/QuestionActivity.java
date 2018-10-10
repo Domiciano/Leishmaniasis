@@ -29,6 +29,7 @@ import java.util.Date;
 import i2t.cideim.R;
 import i2t.cideim.bodylocations.CuerpoHumanoActivity;
 import i2t.cideim.hisopo.CuerpoHumanoHisopoActivity;
+import i2t.cideim.util.LeishConstants;
 
 /**
  * Created by Leonardo.
@@ -355,7 +356,8 @@ public class QuestionActivity extends Activity {
         }
 
         public int getNumeroFotosPorPaciente(String cedula) {
-            File carpeta = new File(Environment.getExternalStorageDirectory()+"/LeishST");
+            File carpeta = new File(Environment.getExternalStorageDirectory()+"/"+ LeishConstants.FOLDER+"/");
+            if(!carpeta.exists()) return 0;
             int contador = 0;
             for(int i=0 ; i<carpeta.list().length ; i++){
                 String filename = carpeta.list()[i];

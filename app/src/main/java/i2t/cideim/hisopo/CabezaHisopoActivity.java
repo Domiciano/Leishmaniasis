@@ -420,32 +420,6 @@ public class CabezaHisopoActivity extends AppCompatActivity implements EntryDial
                 }
                 return;
             }
-
-            case 12: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    int id_zona = getSelectedPart();
-                    //ToDO: Guardar en base de datos la nueva lesion
-                    //String cedula = paciente.getCedula();
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-                    String cedula = sp.getString("patientID", "UNKNOWN");
-                    foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-                    foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
-                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                    preferences.edit().putString("last_foto", foto.toString())
-                            .putInt("id_zona", id_zona).apply();
-
-                    Uri uri = Uri.fromFile(foto);
-
-                    Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                    startActivityForResult(i, 10);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
-                }
-                return;
-            }
-
         }
     }
 

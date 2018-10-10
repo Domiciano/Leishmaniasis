@@ -45,6 +45,7 @@ import i2t.cideim.leishmaniasis.EvaluationActivity;
 import i2t.cideim.leishmaniasis.MainActivity;
 import i2t.cideim.R;
 import i2t.cideim.model.UlcerImg;
+import i2t.cideim.util.LeishConstants;
 
 
 /**
@@ -473,7 +474,7 @@ public class PiernaDerechaActivity extends AppCompatActivity {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             String cedula = sp.getString("patientID", "UNKNOWN");
             foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-            foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
+            foto = new File(Environment.getExternalStorageDirectory() + "/"+ LeishConstants.FOLDER+"/" + foto_code + ".jpg");
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
                     .putInt("id_zona", id_zona).apply();
@@ -614,7 +615,7 @@ public class PiernaDerechaActivity extends AppCompatActivity {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
                     String cedula = sp.getString("patientID", "UNKNOWN");
                     foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-                    foto = new File(Environment.getExternalStorageDirectory() + "/LeishST/" + foto_code + ".jpg");
+                    foto = new File(Environment.getExternalStorageDirectory() + "/"+LeishConstants.FOLDER+"/" + foto_code + ".jpg");
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                     preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
                             .putInt("id_zona", id_zona).apply();

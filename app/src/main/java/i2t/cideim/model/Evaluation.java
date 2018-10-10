@@ -358,4 +358,111 @@ public class Evaluation extends DataXml {
     }
 
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getUlceras_si() {
+        return ulceras_si;
+    }
+
+    public void setUlceras_si(int ulceras_si) {
+        this.ulceras_si = ulceras_si;
+    }
+
+    public int getUlceras_no() {
+        return ulceras_no;
+    }
+
+    public void setUlceras_no(int ulceras_no) {
+        this.ulceras_no = ulceras_no;
+    }
+
+    public int getAgrupadas_si() {
+        return agrupadas_si;
+    }
+
+    public void setAgrupadas_si(int agrupadas_si) {
+        this.agrupadas_si = agrupadas_si;
+    }
+
+    public int getAgrupadas_no() {
+        return agrupadas_no;
+    }
+
+    public void setAgrupadas_no(int agrupadas_no) {
+        this.agrupadas_no = agrupadas_no;
+    }
+
+    public int getLesiones_brazos_si() {
+        return lesiones_brazos_si;
+    }
+
+    public void setLesiones_brazos_si(int lesiones_brazos_si) {
+        this.lesiones_brazos_si = lesiones_brazos_si;
+    }
+
+    public int getLesiones_brazos_no_piernas_no() {
+        return lesiones_brazos_no_piernas_no;
+    }
+
+    public void setLesiones_brazos_no_piernas_no(int lesiones_brazos_no_piernas_no) {
+        this.lesiones_brazos_no_piernas_no = lesiones_brazos_no_piernas_no;
+    }
+
+    public int getLesiones_brazos_no_piernas_si() {
+        return lesiones_brazos_no_piernas_si;
+    }
+
+    public void setLesiones_brazos_no_piernas_si(int lesiones_brazos_no_piernas_si) {
+        this.lesiones_brazos_no_piernas_si = lesiones_brazos_no_piernas_si;
+    }
+
+    public int getActividades_si() {
+        return actividades_si;
+    }
+
+    public void setActividades_si(int actividades_si) {
+        this.actividades_si = actividades_si;
+    }
+
+    public int getActividades_no() {
+        return actividades_no;
+    }
+
+    public void setActividades_no(int actividades_no) {
+        this.actividades_no = actividades_no;
+    }
+
+    public int getAntecedentes_si() {
+        return antecedentes_si;
+    }
+
+    public void setAntecedentes_si(int antecedentes_si) {
+        this.antecedentes_si = antecedentes_si;
+    }
+
+    public int getAntecedentes_no() {
+        return antecedentes_no;
+    }
+
+    public void setAntecedentes_no(int antecedentes_no) {
+        this.antecedentes_no = antecedentes_no;
+    }
+
+    public int getManta_si() {
+        return manta_si;
+    }
+
+    public void setManta_si(int manta_si) {
+        this.manta_si = manta_si;
+    }
+
+    public int getManta_no() {
+        return manta_no;
+    }
+
+    public void setManta_no(int manta_no) {
+        this.manta_no = manta_no;
+    }
 }

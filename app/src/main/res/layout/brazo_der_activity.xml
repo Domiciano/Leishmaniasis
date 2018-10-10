@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".bodylocations.TroncoActivity"
     android:background="@color/orange_background"
-    android:id="@+id/root">
+    android:fitsSystemWindows="true"
+    tools:context=".bodylocations.TroncoActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -16,204 +16,199 @@
         android:layout_height="@dimen/abc_action_bar_default_height_material"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        />
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="110px"
+            android:layout_marginTop="64dp"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
 
             >
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lesiones brazo derecho"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:textStyle="bold|italic"
+                    android:text="Lesiones brazo derecho"
                     android:textColor="#FFF"
-                    android:textSize="11pt"/>
+                    android:textSize="11pt"
+                    android:textStyle="bold|italic" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="#FFF"
-                    />
+                    android:background="#FFF" />
             </LinearLayout>
 
 
-
             <RelativeLayout
+                android:id="@+id/region_brazo_der"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/region_brazo_der">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="50px"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="200dp"
-                        android:background="@drawable/img_brazo_frente"
                         android:id="@+id/brazo_der_frente"
-                        />
-
-                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="200dp"
-                        android:background="@drawable/img_brazo_atras"
+                        android:background="@drawable/img_brazo_frente" />
+
+                    <ImageView
                         android:id="@+id/brazo_der_espalda"
+                        android:layout_width="40dp"
+                        android:layout_height="200dp"
                         android:layout_marginLeft="40dp"
-                        />
+                        android:background="@drawable/img_brazo_atras" />
 
 
                 </LinearLayout>
 
 
                 <Button
+                    android:id="@+id/bp19"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp19"
-                    android:id="@+id/bp19"
 
-                    android:visibility="gone"
-                    />
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp20"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp20"
-                    android:id="@+id/bp20"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp21"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp21"
-                    android:id="@+id/bp21"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp22"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp22"
-                    android:id="@+id/bp22"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp23"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp23"
-                    android:id="@+id/bp23"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp24"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp24"
-                    android:id="@+id/bp24"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp25"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp25"
-                    android:id="@+id/bp25"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp26"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp26"
-                    android:id="@+id/bp26"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp27"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp27"
-                    android:id="@+id/bp27"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp28"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp28"
-                    android:id="@+id/bp28"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
-                    android:layout_width="10px"
-                    android:layout_height="10px"
-
                     android:id="@+id/bp29"
+                    android:layout_width="10px"
+
+                    android:layout_height="10px"
                     android:background="@drawable/bp29"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp30"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp30"
-                    android:id="@+id/bp30"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp31"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp31"
-                    android:id="@+id/bp31"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
-                    android:layout_width="10px"
-                    android:layout_height="10px"
-
                     android:id="@+id/bp32"
+                    android:layout_width="10px"
+
+                    android:layout_height="10px"
                     android:background="@drawable/bp32"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp33"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp33"
-                    android:id="@+id/bp33"
 
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <Button
+                    android:id="@+id/bp34"
                     android:layout_width="10px"
                     android:layout_height="10px"
                     android:background="@drawable/bp34"
-                    android:id="@+id/bp34"
-                    android:visibility="gone"/>
-
-
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
@@ -221,34 +216,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="#FFF"
-                android:textStyle="italic"
-                android:textSize="9pt"
                 android:layout_marginTop="40px"
-                android:text="Lugar aproximado de la lesión"/>
-
+                android:gravity="center"
+                android:text="Lugar aproximado de la lesión"
+                android:textColor="#FFF"
+                android:textSize="9pt"
+                android:textStyle="italic" />
 
 
         </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:background="@color/botones_background"
-                android:textSize="10pt"
-                android:textColor="#FFF"
-                android:height="110px"
-                android:layout_height="110px"
-                android:text="VOLVER"
-                android:layout_alignParentBottom="true"
-                android:onClick="doVolver"
-                android:id="@+id/brazo_der_boton_volver"
-                android:gravity="center"
-                />
-        </RelativeLayout>
 
-
-
-
+        <Button
+            android:id="@+id/brazo_der_boton_volver"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/botones_background"
+            android:gravity="center"
+            android:onClick="doVolver"
+            android:text="VOLVER"
+            android:textColor="#FFF"
+            android:textSize="10pt" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
