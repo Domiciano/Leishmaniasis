@@ -108,7 +108,7 @@
                 android:layout_toEndOf="@+id/triangleAbout"
                 android:background="@color/color_transparent"
                 android:fontFamily="sans-serif-light"
-                android:hint="@string/login_name"
+                android:hint="@string/login_id"
                 android:inputType="textPersonName"
                 android:textColor="@color/color_orange"
                 android:textColorHint="@color/color_gray"

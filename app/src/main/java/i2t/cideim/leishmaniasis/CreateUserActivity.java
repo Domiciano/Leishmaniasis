@@ -82,14 +82,14 @@ public class CreateUserActivity extends Activity {
         // Obtains the data from the editable fields
         String name = editTextName.getText().toString();
         String lastName = editTextLastName.getText().toString();
-        String id = editTextId.getText().toString();
+        String cedula = editTextId.getText().toString();
         char genre = toggleButtonM.isChecked() ? 'M' : 'F';
 
         // Validates that the required data is available
-        if (name.trim().length() != 0 && lastName.trim().length() != 0 && id.trim().length() != 0) {
+        if (name.trim().length() != 0 && lastName.trim().length() != 0 && cedula.trim().length() != 0) {
 
             // Creates the user
-            LiderComunitario liderComunitario = new LiderComunitario(id, name, lastName, genre);
+            LiderComunitario liderComunitario = new LiderComunitario(cedula, name, lastName);
             int result = db.addUser(liderComunitario);
 
             if (result == DatabaseHandler.SUCCESS) {

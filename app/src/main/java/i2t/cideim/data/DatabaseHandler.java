@@ -34,12 +34,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final int UNKNOWN_ERROR = 99;
 
     // Database
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 11;
     private static final String DATABASE_NAME = "leishmaniasis";
 
     // Users table
     private static final String TABLE_USERS = "users";
     private static final String KEY_USER_ID = "id";
+    private static final String KEY_NAT_ID = "cedula";
     private static final String KEY_USER_NAME = "name";
     private static final String KEY_USER__LAST_NAME = "last_name";
     private static final String KEY_USER_GENRE = "genre";
@@ -83,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_EVALUATION_DATE = "date";
     private static final String KEY_EVALUATION_THRESHOLD = "threshold";
     private static final String KEY_EVALUATION_SCORE = "score";
+    private static final String KEY_EVALUATION_SYNCKED = "syncked";
 
     // Users table
     private static final String TABLE_ULCERIMG = "ulcerImg";
@@ -113,7 +115,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
             String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
-                    + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_USER_NAME + " TEXT,"
+                    + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_NAT_ID + " TEXT," + KEY_USER_NAME + " TEXT,"
                     + KEY_USER__LAST_NAME + " TEXT," + KEY_USER_GENRE + " TEXT" + ")";
 
         String CREATE_PATIENTS_TABLE = "CREATE TABLE " + TABLE_PATIENTS + "("
@@ -145,6 +147,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_EVALUATION_LESIONES_RL + " INTEGER,"
                 + KEY_EVALUATION_ACTIVIDADES + " INTEGER,"
                 + KEY_EVALUATION_ANTECEDENTES + " INTEGER,"
+                + KEY_EVALUATION_SYNCKED + " INTEGER,"
+
                 + KEY_EVALUATION_MANTA + " INTEGER," + KEY_EVALUATION_DATE
                 + " TEXT," + KEY_EVALUATION_THRESHOLD + " NUMERIC,"
                 + KEY_EVALUATION_SCORE + " NUMERIC," + FK_PATIENT + " TEXT" + ")";
@@ -205,7 +209,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /* Adds a new item to the users table */
     public int addUser(LiderComunitario liderComunitario) {
         ContentValues values = new ContentValues();
-        values.put(KEY_USER_ID, liderComunitario.getIdentification());
+        values.put(KEY_USER_ID, liderComunitario.getId());
+        values.put(KEY_NAT_ID, liderComunitario.getIdentification());
         values.put(KEY_USER_NAME, liderComunitario.getName());
         values.put(KEY_USER__LAST_NAME, liderComunitario.getLastName());
         values.put(KEY_USER_GENRE, String.valueOf(liderComunitario.getGenre()));
@@ -213,32 +218,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /* Returns the user with the specified id, only with its name and identification. */
-    public LiderComunitario getMinimizedUser(String id) {
+    public LiderComunitario getMinimizedUser(String cedula) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_USERS, new String[]{KEY_USER_ID,
-                        KEY_USER_NAME}, KEY_USER_ID + "=?", new String[]{id}, null,
+        Cursor cursor = db.query(TABLE_USERS, new String[]{KEY_USER_ID, KEY_NAT_ID,
+                        KEY_USER_NAME, KEY_USER__LAST_NAME}, KEY_NAT_ID + "=?", new String[]{cedula}, null,
                 null, null, null
         );
         LiderComunitario liderComunitario = null;
         if (cursor != null && cursor.moveToFirst()) {
-            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1));
+            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
         }
         db.close();
         return liderComunitario;
     }
 
     /* Returns a user with all his properties and minimized patients */
-    public LiderComunitario getUserWithMinimizedPatients(String id) {
+    public LiderComunitario getUserWithMinimizedPatients(String cedula) {
         LiderComunitario liderComunitario = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,
-                new String[]{KEY_USER_ID, KEY_USER_NAME, KEY_USER__LAST_NAME, KEY_USER_GENRE},
-                KEY_USER_ID + "=?", new String[]{id}, null,
+                new String[]{KEY_USER_ID, KEY_NAT_ID, KEY_USER_NAME, KEY_USER__LAST_NAME},
+                KEY_NAT_ID + "=?", new String[]{cedula}, null,
                 null, null, null
         );
 
         if (cursor != null && cursor.moveToFirst()) {
-            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3).charAt(0));
+            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
             liderComunitario.addAllPatients(getMinimizedPatients(liderComunitario.getIdentification()));
         }
 
@@ -329,11 +334,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /* Adds an item to the evaluations table */
     public int addEvaluation(Evaluation evaluation, String patientUUID) {
         Calendar cal = Calendar.getInstance();
-        // TODO: Fix date to add hh:mm:ss.ssss
-        String date = cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH) + 1)
-                + "-" + cal.get(Calendar.YEAR);
+        String date = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1)
+                + "-" + cal.get(Calendar.DAY_OF_MONTH);
         ContentValues values = new ContentValues();
         values.put(KEY_EVALUATION_UUID, evaluation.getUUIDNumber());
+        values.put(KEY_EVALUATION_SYNCKED, evaluation.isSyncked());
         values.put(KEY_EVALUATION_ULCERAS, evaluation.isUlceras());
         values.put(KEY_EVALUATION_AGRUPADAS, evaluation.isAgrupadas());
         values.put(KEY_EVALUATION_LESIONES_H, evaluation.isLesionesH());
@@ -387,7 +392,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_EVALUATION_LESIONES_H, KEY_EVALUATION_LESIONES_B, KEY_EVALUATION_LESIONES_LA,
                         KEY_EVALUATION_LESIONES_RA, KEY_EVALUATION_LESIONES_LL, KEY_EVALUATION_LESIONES_RL,
                         KEY_EVALUATION_ACTIVIDADES, KEY_EVALUATION_ANTECEDENTES, KEY_EVALUATION_MANTA,
-                        KEY_EVALUATION_DATE, KEY_EVALUATION_THRESHOLD, KEY_EVALUATION_SCORE},
+                        KEY_EVALUATION_DATE, KEY_EVALUATION_THRESHOLD, KEY_EVALUATION_SCORE, KEY_EVALUATION_SYNCKED},
                 FK_PATIENT + "=?", new String[]{patientUUID}, null, null, null, null
         );
         Evaluation evaluation = null;
@@ -395,7 +400,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             evaluation = new Evaluation(cursor.getString(0), cursor.getInt(1) == 1 ? true : false, cursor.getInt(2) == 1 ? true : false,
                     cursor.getInt(3) == 1 ? true : false, cursor.getInt(4) == 1 ? true : false, cursor.getInt(5) == 1 ? true : false, cursor.getInt(6) == 1 ? true : false,
                     cursor.getInt(7) == 1 ? true : false, cursor.getInt(8) == 1 ? true : false, cursor.getInt(9) == 1 ? true : false, cursor.getInt(10) == 1 ? true : false,
-                    cursor.getInt(11) == 1 ? true : false, cursor.getString(12), cursor.getInt(13), cursor.getInt(14));
+                    cursor.getInt(11) == 1 ? true : false, cursor.getString(12), cursor.getInt(13), cursor.getInt(14), cursor.getInt(15) == 1 ? true : false);
         }
         db.close();
         return evaluation;
@@ -405,17 +410,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /* Returns a user with its patients and evaluations */
     // TODO: Only send non synced information
-    public LiderComunitario getUserForSync(String id) {
+    public LiderComunitario getUserForSync(String cedula) {
         LiderComunitario liderComunitario = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,
-                new String[]{KEY_USER_ID, KEY_USER_NAME, KEY_USER__LAST_NAME, KEY_USER_GENRE},
-                KEY_USER_ID + "=?", new String[]{id}, null,
+                new String[]{KEY_USER_ID, KEY_NAT_ID, KEY_USER_NAME, KEY_USER__LAST_NAME},
+                KEY_NAT_ID + "=?", new String[]{cedula}, null,
                 null, null, null
         );
 
         if (cursor != null && cursor.moveToFirst()) {
-            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3).charAt(0));
+            liderComunitario = new LiderComunitario(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3));
             liderComunitario.addAllPatients(getPatientsForSync(liderComunitario.getIdentification()));
         }
 
@@ -461,7 +466,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_EVALUATION_LESIONES_H, KEY_EVALUATION_LESIONES_B, KEY_EVALUATION_LESIONES_LA,
                         KEY_EVALUATION_LESIONES_RA, KEY_EVALUATION_LESIONES_LL, KEY_EVALUATION_LESIONES_RL,
                         KEY_EVALUATION_ACTIVIDADES, KEY_EVALUATION_ANTECEDENTES, KEY_EVALUATION_MANTA,
-                        KEY_EVALUATION_DATE, KEY_EVALUATION_THRESHOLD, KEY_EVALUATION_SCORE},
+                        KEY_EVALUATION_DATE, KEY_EVALUATION_THRESHOLD, KEY_EVALUATION_SCORE, KEY_EVALUATION_SYNCKED},
                 FK_PATIENT + "=?", new String[]{patientUUID}, null, null, null, null
         );
         if (cursor != null && cursor.moveToFirst()) {
@@ -469,7 +474,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 Evaluation evaluation = new Evaluation(cursor.getString(0), cursor.getInt(1) == 1 ? true : false, cursor.getInt(2) == 1 ? true : false,
                         cursor.getInt(3) == 1 ? true : false, cursor.getInt(4) == 1 ? true : false, cursor.getInt(5) == 1 ? true : false, cursor.getInt(6) == 1 ? true : false,
                         cursor.getInt(7) == 1 ? true : false, cursor.getInt(8) == 1 ? true : false, cursor.getInt(9) == 1 ? true : false, cursor.getInt(10) == 1 ? true : false,
-                        cursor.getInt(11) == 1 ? true : false, cursor.getString(12), cursor.getInt(13), cursor.getInt(14));
+                        cursor.getInt(11) == 1 ? true : false, cursor.getString(12), cursor.getInt(13), cursor.getInt(14), cursor.getInt(15) == 1 ? true : false);
                 evaluation.setEvaluadorId(evaluatorCC);
                 evaluation.setPacienteId(patientCC);
 
@@ -629,5 +634,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<Hisopo> hisopos = getAllHisoposByEval(eval);
 
         return -1;
+    }
+
+    public void actualizarEvaluaciones(ArrayList<Evaluation> evaluaciones) {
+        for(int i=0 ; i<evaluaciones.size() ; i++){
+            Evaluation a = evaluaciones.get(i);
+            this.updateEvaluation(a);
+        }
+    }
+
+    private void updateEvaluation(Evaluation evaluation) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE "+TABLE_EVALUATIONS+" SET "+KEY_EVALUATION_SYNCKED+" = 1 WHERE "+KEY_EVALUATION_UUID+" = '"+evaluation.getUUIDNumber()+"'");
+        db.close();
     }
 }

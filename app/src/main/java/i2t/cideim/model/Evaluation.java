@@ -52,6 +52,8 @@ public class Evaluation extends DataXml {
     @Element(name = "Puntaje")
     private double score;
 
+    private boolean syncked;
+
     @Element(name = "evaluadorId")
     private String evaluadorId; // Password
     @Element(name = "pacienteId")
@@ -69,27 +71,7 @@ public class Evaluation extends DataXml {
         this.hisopoList = new ArrayList<>();
     }
 
-    public Evaluation(boolean ulceras, boolean agrupadas, boolean lesionesH, boolean lesionesB, boolean lesionesLA, boolean lesionesRA, boolean lesionesLL, boolean lesionesRL, boolean actividades, boolean antecedentes, boolean manta, String date) {
-        this.UUIDNumber = UUID.randomUUID().toString();
-        this.ulceras = ulceras;
-        this.agrupadas = agrupadas;
-        this.lesionesH = lesionesH;
-        this.lesionesB = lesionesB;
-        this.lesionesLA = lesionesLA;
-        this.lesionesRA = lesionesRA;
-        this.lesionesLL = lesionesLL;
-        this.lesionesRL = lesionesRL;
-        this.actividades = actividades;
-        this.antecedentes = antecedentes;
-        this.manta = manta;
-        this.date = date;
-        this.umbral = 0;
-        this.score = this.calculateScore();
-        this.ulcerList = new ArrayList<>();
-        this.hisopoList = new ArrayList<>();
-    }
-
-    public Evaluation(String uuid, boolean ulceras, boolean agrupadas, boolean lesionesH, boolean lesionesB, boolean lesionesLA, boolean lesionesRA, boolean lesionesLL, boolean lesionesRL, boolean actividades, boolean antecedentes, boolean manta, String date, int umbral, int score) {
+    public Evaluation(String uuid, boolean ulceras, boolean agrupadas, boolean lesionesH, boolean lesionesB, boolean lesionesLA, boolean lesionesRA, boolean lesionesLL, boolean lesionesRL, boolean actividades, boolean antecedentes, boolean manta, String date, int umbral, int score, boolean synced) {
         this.UUIDNumber = uuid;
         this.ulceras = ulceras;
         this.agrupadas = agrupadas;
@@ -107,6 +89,15 @@ public class Evaluation extends DataXml {
         this.score = score;
         this.ulcerList = new ArrayList<UlcerImg>();
         this.hisopoList = new ArrayList<>();
+        this.syncked = synced;
+    }
+
+    public boolean isSyncked() {
+        return syncked;
+    }
+
+    public void setSyncked(boolean syncked) {
+        this.syncked = syncked;
     }
 
     @Override

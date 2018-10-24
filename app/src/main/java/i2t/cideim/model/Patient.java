@@ -60,6 +60,8 @@ public class Patient extends DataXml {
 
     private List<Evaluation> evaluationList;
 
+
+
     public Patient(String identification, String name, String lastName, String documentType, char genre, String address, String phone, String birthday, String province, String municipality, String lane, String contactName, String contactLastName, String contactPhone, String contactAddress, int injuryWeeks, double lat, double lng) {
         this.UUIDNumber = UUID.randomUUID().toString();
         this.identification = identification;
@@ -295,5 +297,14 @@ public class Patient extends DataXml {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Patient){
+            Patient toCompare = (Patient) obj;
+            return this.UUIDNumber.equals(toCompare.UUIDNumber);
+        }
+        return false;
     }
 }

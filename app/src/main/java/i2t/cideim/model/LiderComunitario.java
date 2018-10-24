@@ -33,8 +33,8 @@ public class LiderComunitario extends DataXml {
 
     private List<Patient> patientList;
 
-    public LiderComunitario(String identification, String name, String lastName, char genre) {
-        this.id = UUID.randomUUID().toString();
+    public LiderComunitario(String id, String identification, String name, String lastName) {
+        this.id = id;
         this.identification = identification;
         this.name = name;
         this.lastName = lastName;
@@ -42,10 +42,13 @@ public class LiderComunitario extends DataXml {
         this.patientList = new ArrayList<Patient>();
     }
 
-    public LiderComunitario(String identification, String name) {
+
+    public LiderComunitario(String identification, String name, String lastName) {
         this.id = UUID.randomUUID().toString();
         this.identification = identification;
         this.name = name;
+        this.lastName = lastName;
+        this.genre = 'U';
         this.patientList = new ArrayList<Patient>();
     }
 

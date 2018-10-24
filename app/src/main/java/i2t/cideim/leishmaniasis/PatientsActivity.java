@@ -31,20 +31,23 @@ import i2t.cideim.R;
 import i2t.cideim.custom.BroadcastConstants;
 import i2t.cideim.custom.PatientsListAdapter;
 import i2t.cideim.data.DatabaseHandler;
+import i2t.cideim.dto.Constants;
 import i2t.cideim.dto.Document;
 import i2t.cideim.dto.PatientDTO;
 import i2t.cideim.dto.UlcerImgDTO;
+import i2t.cideim.dto.Usuario;
 import i2t.cideim.model.Evaluation;
 import i2t.cideim.model.LiderComunitario;
 import i2t.cideim.model.Patient;
 import i2t.cideim.model.UlcerImg;
+import i2t.cideim.snd.services.WebserviceConsumer;
 
 /**
  * Created by Leonardo.
  * Activity that shows the list of patients.
  */
 
-public class PatientsActivity extends Activity {
+public class PatientsActivity extends Activity implements WebserviceConsumer.ServerResponseReceiver {
 
     private TextView textViewTitle;
     private ListView listViewPatients;
@@ -69,6 +72,8 @@ public class PatientsActivity extends Activity {
         IntentFilter syncServiceMessageIntentFilter = new IntentFilter(BroadcastConstants.BROADCAST_ACTION);
         SyncServiceMessageReceiver syncServiceMessageReceiver = new SyncServiceMessageReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(syncServiceMessageReceiver, syncServiceMessageIntentFilter);
+
+
     }
 
     public void onStart() {
@@ -178,96 +183,164 @@ public class PatientsActivity extends Activity {
         builder.setPositiveButton(R.string.patients_sync_close, null);
         dialog = builder.create();
         dialog.show();
-        Intent serviceIntent = new Intent(PatientsActivity.this,
-                SyncService.class);
-        LiderComunitario syncUser = db.getUserForSync(user.getIdentification());
-        Gson g = new Gson();
-        Log.e( "ALERTA","MODELO: "+g.toJson(syncUser) );
-        serviceIntent.putExtra("user", syncUser);
+        //Intent serviceIntent = new Intent(PatientsActivity.this,
+        //        SyncService.class);
+        //LiderComunitario syncUser = db.getUserForSync(user.getIdentification());
+        //Log.e( "ALERTA","MODELO: "+g.toJson(syncUser) );
+        //serviceIntent.putExtra("user", syncUser);
         //startService(serviceIntent);
-        //LLENAR DOCUMENTOS
-        ArrayList<Document> documentos = new ArrayList<>();
 
+        LiderComunitario comunitario = db.getUserForSync(user.getIdentification());
+        Log.e(">>>", "USER: " + user.getId());
+        final Gson g = new Gson();
+        //EVALUADOR
+        final Usuario u = new Usuario();
+        u.name = comunitario.getName();
+        u.lastname = comunitario.getLastName();
+        u.nationalId = comunitario.getIdentification();
+        u.id = comunitario.getId();
+        u.reader = true;
+        u.writer = true;
+
+        WebserviceConsumer.PostUserByCedula postuser = new WebserviceConsumer.PostUserByCedula(g.toJson(u), u.nationalId);
+        postuser.setObserver(new WebserviceConsumer.ServerResponseReceiver() {
+            @Override
+            public void onServerResponse(Object json) {
+                generarDocumentos();
+            }
+        });
+        postuser.start();
+    }
+
+    private void generarDocumentos() {
+        Gson g = new Gson();
         SimpleDateFormat dateformatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        for(int paciente = 0 ; paciente<syncUser.getPatientList().size() ; paciente++){
+        LiderComunitario comunitario = db.getUserForSync(user.getIdentification());
+
+        ArrayList<Document> documentos = new ArrayList<>();
+        final ArrayList<Evaluation> evaluaciones = new ArrayList<>();
+
+        for (int paciente = 0; paciente < comunitario.getPatientList().size(); paciente++) {
             //Iteraciones por paciente
-            Patient patient = syncUser.getPatientList().get(paciente);
-            for (int evaluacion = 0 ; evaluacion<patient.getEvaluationList().size() ; evaluacion++){
+            Patient patient = comunitario.getPatientList().get(paciente);
+            for (int evaluacion = 0; evaluacion < patient.getEvaluationList().size(); evaluacion++) {
                 //Iterciones por evaluacion
                 Evaluation evaluation = patient.getEvaluationList().get(evaluacion);
-                Document document = new Document();
-                document.id = UUID.randomUUID().toString();
-                document.lastDateUpdate = dateformatter.format(Calendar.getInstance().getTime());
-                document.pacienteId = patient.getUUIDNumber();
-                document.evaluadorId = syncUser.getId();
-                document.date = evaluation.getDate();
+                if (!evaluation.isSyncked()) {
+                    evaluaciones.add(evaluation);
+                    Document document = new Document();
+                    document.id = UUID.randomUUID().toString();
+                    document.lastDateUpdate = dateformatter.format(Calendar.getInstance().getTime());
+                    document.pacienteId = patient.getUUIDNumber();
+                    document.evaluadorId = comunitario.getId();
+                    document.date = evaluation.getDate();
+                    document.umbral = (int) evaluation.getUmbral();
+                    document.puntaje = (int) evaluation.getScore();
+                    document.injuryWeeks = patient.getInjuryWeeks();
 
-                document.umbral = (int) evaluation.getUmbral();
-                document.puntaje = (int) evaluation.getScore();
-                document.injuryWeeks = patient.getInjuryWeeks();
+                    document.lesionesAgrupadas = evaluation.isAgrupadas();
+                    document.ulcerasBordesElevados = evaluation.isUlceras();
+                    document.localizacionCabeza = evaluation.isLesionesH();
+                    document.localizacionTronco = evaluation.isLesionesB();
+                    document.localizacionBrazoIzquierdo = evaluation.isLesionesLA();
+                    document.localizacionBrazoDerecho = evaluation.isLesionesRA();
+                    document.localizacionPiernaIzquierda = evaluation.isLesionesLL();
+                    document.localizacionPiernaDerecha = evaluation.isLesionesRL();
+                    document.actividadRiesgo = evaluation.isActividades();
+                    document.antecedentes = evaluation.isAntecedentes();
+                    document.contactoManta = evaluation.isManta();
 
-                document.lesionesAgrupadas = evaluation.isAgrupadas();
-                document.ulcerasBordesElevados = evaluation.isUlceras();
-                document.localizacionCabeza = evaluation.isLesionesH();
-                document.localizacionTronco = evaluation.isLesionesB();
-                document.localizacionBrazoIzquierdo = evaluation.isLesionesLA();
-                document.localizacionBrazoDerecho = evaluation.isLesionesRA();
-                document.localizacionPiernaIzquierda = evaluation.isLesionesLL();
-                document.localizacionPiernaDerecha= evaluation.isLesionesRL();
-                document.actividadRiesgo = evaluation.isActividades();
-                document.antecedentes= evaluation.isAntecedentes();
-                document.contactoManta= evaluation.isManta();
+                    document.cantidadFoto = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
+                    document.latitud = Double.parseDouble(patient.getLat());
+                    document.longitud = Double.parseDouble(patient.getLng());
+                    ;
 
-                document.cantidadFoto = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
-                document.latitud = Double.parseDouble(patient.getLat());
-                document.longitud = Double.parseDouble(patient.getLng());;
+                    document.numeroTotalLesiones = db.getNumeroLesiones(evaluation.getUUIDNumber());
+                    document.numeroHisopos = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
 
-                document.numeroTotalLesiones = db.getNumeroLesiones(evaluation.getUUIDNumber());
-                document.numeroHisopos = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
+                    List<UlcerImg> imgs = db.getAllUlcerImgByEval(evaluation.getUUIDNumber());
+                    ArrayList<UlcerImgDTO> fotoLesiones = new ArrayList<>();
+                    for (int j = 0; j < imgs.size(); j++) {
+                        UlcerImgDTO img = new UlcerImgDTO();
+                        img.id = imgs.get(j).getImgUUID();
+                        img.filename = imgs.get(j).getImgUUID();
+                        img.imgDate = dateformatter.format(imgs.get(j).getImgDate());
+                        img.url = "-";
+                        img.patientId = patient.getUUIDNumber();
+                        img.raterId = comunitario.getId();
+                        img.evaluationId = evaluation.getUUIDNumber();
 
-                List<UlcerImg> imgs = db.getAllUlcerImgByEval(evaluation.getUUIDNumber());
-                ArrayList<UlcerImgDTO> fotoLesiones = new ArrayList<>();
-                for(int j=0 ; j<imgs.size() ; j++){
-                    UlcerImgDTO img = new UlcerImgDTO();
-                    img.id = imgs.get(j).getImgUUID();
-                    img.filename = imgs.get(j).getImgUUID();
-                    img.imgDate = dateformatter.format(imgs.get(j).getImgDate());
-                    img.url = "-";
-                    img.patientId = patient.getUUIDNumber();
-                    img.raterId = syncUser.getId();
-                    img.evaluationId = evaluation.getUUIDNumber();
+                        fotoLesiones.add(img);
+                    }
+                    document.fotoLesiones = fotoLesiones;
 
-                    fotoLesiones.add(img);
+
+                    PatientDTO patientDTO = new PatientDTO();
+                    patientDTO.id = patient.getUUIDNumber();
+                    patientDTO.cedula = patient.getIdentification();
+                    patientDTO.name = patient.getName();
+                    patientDTO.lastName = patient.getLastName();
+                    patientDTO.documentType = patient.getDocumentType();
+                    patientDTO.gender = "" + patient.getGenre();
+                    patientDTO.currentAddress = patient.getAddress();
+                    patientDTO.phone = patient.getPhone();
+                    patientDTO.birthday = patient.getBirthday();
+                    patientDTO.province = patient.getProvince();
+                    patientDTO.municipality = patient.getMunicipality();
+                    patientDTO.lane = patient.getLane();
+                    patientDTO.contactName = patient.getContactName();
+                    patientDTO.contactLastName = patient.getContactLastName();
+                    patientDTO.contactPhone = patient.getContactPhone();
+                    patientDTO.contactCurrentAddress = patient.getContactAddress();
+                    patientDTO.injuryWeeks = patient.getInjuryWeeks();
+
+                    document.patient = patientDTO;
+                    documentos.add(document);
                 }
-                document.fotoLesiones = fotoLesiones;
-
-
-
-                PatientDTO patientDTO = new PatientDTO();
-                patientDTO.id = patient.getUUIDNumber();
-                patientDTO.cedula = patient.getIdentification();
-                patientDTO.name= patient.getName();
-                patientDTO.lastName= patient.getLastName();
-                patientDTO.documentType= patient.getDocumentType();
-                patientDTO.gender= ""+patient.getGenre();
-                patientDTO.currentAddress= patient.getAddress();
-                patientDTO.phone= patient.getPhone();
-                patientDTO.birthday= patient.getBirthday();
-                patientDTO.province= patient.getProvince();
-                patientDTO.municipality= patient.getMunicipality();
-                patientDTO.lane= patient.getLane();
-                patientDTO.contactName= patient.getContactName();
-                patientDTO.contactLastName= patient.getContactLastName();
-                patientDTO.contactPhone= patient.getContactPhone();
-                patientDTO.contactCurrentAddress= patient.getContactAddress();
-                patientDTO.injuryWeeks = patient.getInjuryWeeks();
-
-                document.patient = patientDTO;
-                documentos.add(document);
             }
         }
 
-        Log.e( "ALERTA","DOC: "+g.toJson(documentos) );
+        Log.e("ALERTA", "DOC: " + g.toJson(documentos));
+        db.actualizarEvaluaciones(evaluaciones);
+
+        /*
+        WebserviceConsumer.PostListDocument documentProc = new WebserviceConsumer.PostListDocument(documentos);
+        documentProc.setObserver(new WebserviceConsumer.ServerResponseReceiver() {
+            @Override
+            public void onServerResponse(Object json) {
+                if (json instanceof String) {
+                    String respuesta = (String) json;
+                    switch (respuesta) {
+                        case Constants.OK:
+                            //MARCAR EVALUACIONES PARA NO VOLVER A MANDAR
+                            db.actualizarEvaluaciones(evaluaciones);
+                            break;
+                        case Constants.IOEX:
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(PatientsActivity.this, "Error al subir los documentos", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            break;
+                    }
+                }
+            }
+        });
+        documentProc.start();
+        */
+
+    }
+
+    @Override
+    public void onServerResponse(Object obj) {
+        if (obj instanceof String) {
+
+        } else if (obj instanceof Usuario) {
+
+        } else if (obj instanceof Document) {
+
+        }
     }
 
     // Broadcast receiver for receiving status updates from the SyncService
