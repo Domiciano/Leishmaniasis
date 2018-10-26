@@ -66,10 +66,6 @@
                 android:layout_marginRight="40dp">
             </GridView>
 
-
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -85,9 +81,9 @@
                 android:background="@color/botones_background"
                 android:layout_gravity="center"
                 android:textColor="#FFF"
-                android:paddingLeft="40px"
-                android:paddingRight="40px"
-                android:layout_marginBottom="40px"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="20dp"
                 style="?android:attr/borderlessButtonStyle"
                 android:text="Nueva Foto"
                 android:onClick="nuevaFoto"

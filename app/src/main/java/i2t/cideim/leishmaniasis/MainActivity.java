@@ -36,7 +36,7 @@ import i2t.cideim.util.LeishConstants;
 /**
  * Created by Leonardo.
  * This activity allows the users to login.
- */
+ * */
 
 public class MainActivity extends Activity implements WebserviceConsumer.ServerResponseReceiver{
 
