@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -218,16 +221,25 @@ public class BrazoIzquierdoActvity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 10 && resultCode == RESULT_OK){
+        if (requestCode == 10 && resultCode == RESULT_OK) {
+            try {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String path = preferences.getString("last_foto", "NO_FOTO");
 
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String path = preferences.getString("last_foto","NO_FOTO");
-            if(!path.equals("NO_FOTO")) {
-                preferences.edit().putString("parte_actual","Lesiones brazo izquierdo")
-                        .putString("body_name", "brazo_izq").commit();
-                Intent i = new Intent(this, VistaPreviaFotoActivity.class);
-                i.putExtra("foto_path", path);
-                startActivity(i);
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                FileOutputStream fos = new FileOutputStream(new File(path));
+                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+
+                if (!path.equals("NO_FOTO")) {
+                    preferences.edit().putString("parte_actual", "Lesiones brazo izquierdo")
+                            .putString("body_name", "cabeza").apply();
+                    Intent i = new Intent(this, VistaPreviaFotoActivity.class);
+                    i.putExtra("foto_path", path);
+                    startActivity(i);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         }
     }

@@ -630,11 +630,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return diff.size();
     }
 
-    public int getAllHisopos(String eval) {
-        List<Hisopo> hisopos = getAllHisoposByEval(eval);
 
-        return -1;
-    }
 
     public void actualizarEvaluaciones(ArrayList<Evaluation> evaluaciones) {
         for(int i=0 ; i<evaluaciones.size() ; i++){

@@ -351,8 +351,12 @@ public class QuestionActivity extends Activity {
             super.onResume();
             SharedPreferences sp  = PreferenceManager.getDefaultSharedPreferences(getActivity());
             int numeroFotos = getNumeroFotosPorPaciente(sp.getString("patientID", "XXXXX"));
-            if(numeroFotos>0) imageViewCheck.setVisibility(View.VISIBLE);
+            if( evaluationHasPhotos() ) imageViewCheck.setVisibility(View.VISIBLE);
             else imageViewCheck.setVisibility(View.INVISIBLE);
+        }
+
+        private boolean evaluationHasPhotos() {
+            return EvaluationActivity.currentEvaluation.getUlcerList().size()>0;
         }
 
         public int getNumeroFotosPorPaciente(String cedula) {
