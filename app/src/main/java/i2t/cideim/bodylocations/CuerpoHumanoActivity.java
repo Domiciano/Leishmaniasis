@@ -76,8 +76,6 @@ public class CuerpoHumanoActivity extends AppCompatActivity implements View.OnTo
 
     boolean modo_nueva_lesion = false;
 
-    //ManejadorBD db;
-    //Paciente paciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

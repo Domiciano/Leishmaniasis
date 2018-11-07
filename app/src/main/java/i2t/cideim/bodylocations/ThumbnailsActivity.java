@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentTransaction;
@@ -68,6 +69,12 @@ public class ThumbnailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thumbnails_activity);
+
+        //TODO: SOLUCIONAR
+        StrictMode.VmPolicy.Builder newbuilder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(newbuilder.build());
+
+
         carpeta = new File(Environment.getExternalStorageDirectory()+"/"+ LeishConstants.FOLDER);
         //db = new ManejadorBD(this);
 
@@ -252,7 +259,7 @@ public class ThumbnailsActivity extends AppCompatActivity {
         String cedula = sp.getString("patientID", "UNKNOWN");
         format = new SimpleDateFormat("yyyy-MM-dd");
         fecha_fotos = format.format(Calendar.getInstance().getTime());
-        foto_code = "DT"+ fecha_fotos +"DT"+"CC"+cedula+"CC_"+"BP"+id_zona+"BP_"+ UUID.randomUUID().toString();
+        foto_code = "GUARAL_DT"+ fecha_fotos +"DT"+"CC"+cedula+"CC_"+"BP"+id_zona+"BP_"+ UUID.randomUUID().toString();
         foto = new File(carpeta+"/"+foto_code+".jpg");
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.edit().putString("last_foto",foto.toString())

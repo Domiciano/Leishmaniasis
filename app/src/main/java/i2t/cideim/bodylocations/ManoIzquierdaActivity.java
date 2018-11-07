@@ -48,6 +48,7 @@ import i2t.cideim.leishmaniasis.EvaluationActivity;
 import i2t.cideim.leishmaniasis.MainActivity;
 import i2t.cideim.R;
 import i2t.cideim.model.UlcerImg;
+import i2t.cideim.util.ImageUtils;
 import i2t.cideim.util.LeishConstants;
 
 
@@ -446,14 +447,13 @@ public class ManoIzquierdaActivity extends AppCompatActivity {
             int id_zona = getSelectedPart();
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             String cedula = sp.getString("patientID", "UNKNOWN");
-            foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
-            foto = new File(Environment.getExternalStorageDirectory() + "/"+ LeishConstants.FOLDER+"/" + foto_code + ".jpg");
+            foto_code = "GUARAL_DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
+            foto = new File(Environment.getExternalStorageDirectory() + "/"+LeishConstants.FOLDER+"/" + foto_code + ".jpg");
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
                     .putInt("id_zona", id_zona).apply();
 
-            Uri uri = Uri.fromFile(foto);
-
+            Uri uri = ImageUtils.getImageContentUri(this, foto);
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -469,7 +469,6 @@ public class ManoIzquierdaActivity extends AppCompatActivity {
 
         }
     }
-
     public void verifyFotos() {
         /*Menos VUELTAS QUE EL DE ABAJO
         for(int i=0 ; i<zonas_afectadas.size() ; i++){
@@ -588,7 +587,7 @@ public class ManoIzquierdaActivity extends AppCompatActivity {
                     //String cedula = paciente.getCedula();
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
                     String cedula = sp.getString("patientID", "UNKNOWN");
-                    foto_code = "DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
+                    foto_code = "GUARAL_DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
                     foto = new File(Environment.getExternalStorageDirectory() + "/"+LeishConstants.FOLDER+"/" + foto_code + ".jpg");
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                     preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())

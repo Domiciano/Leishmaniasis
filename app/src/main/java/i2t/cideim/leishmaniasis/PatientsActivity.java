@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 import i2t.cideim.R;
+import i2t.cideim.cloudinary.CloudinaryHandler;
 import i2t.cideim.custom.BroadcastConstants;
 import i2t.cideim.custom.PatientsListAdapter;
 import i2t.cideim.data.DatabaseHandler;
@@ -210,6 +211,10 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
             }
         });
         postuser.start();
+
+        Intent ser = new Intent(getApplicationContext(), CloudinaryHandler.class);
+        getApplicationContext().startService(ser);
+
     }
 
     private void generarDocumentos() {
