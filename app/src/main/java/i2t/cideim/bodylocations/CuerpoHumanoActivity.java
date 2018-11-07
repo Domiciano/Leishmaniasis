@@ -932,6 +932,7 @@ public class CuerpoHumanoActivity extends AppCompatActivity implements View.OnTo
             edit.remove("BP" + i);
         }
         edit.commit();
+        
     }
 
 }
