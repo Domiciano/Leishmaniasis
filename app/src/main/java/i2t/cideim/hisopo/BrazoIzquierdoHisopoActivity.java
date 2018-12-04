@@ -477,7 +477,7 @@ public class BrazoIzquierdoHisopoActivity extends AppCompatActivity implements E
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(BrazoIzquierdoHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }
@@ -524,7 +524,7 @@ public class BrazoIzquierdoHisopoActivity extends AppCompatActivity implements E
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(BrazoIzquierdoHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }

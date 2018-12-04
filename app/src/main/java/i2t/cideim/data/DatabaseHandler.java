@@ -114,9 +114,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /* Creates the SQLite database */
     @Override
     public void onCreate(SQLiteDatabase db) {
-            String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
-                    + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_NAT_ID + " TEXT," + KEY_USER_NAME + " TEXT,"
-                    + KEY_USER__LAST_NAME + " TEXT," + KEY_USER_GENRE + " TEXT" + ")";
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+                + KEY_USER_ID + " TEXT PRIMARY KEY," + KEY_NAT_ID + " TEXT," + KEY_USER_NAME + " TEXT,"
+                + KEY_USER__LAST_NAME + " TEXT," + KEY_USER_GENRE + " TEXT" + ")";
 
         String CREATE_PATIENTS_TABLE = "CREATE TABLE " + TABLE_PATIENTS + "("
                 + KEY_PATIENT_UUID + " TEXT PRIMARY KEY," + KEY_PATIENT_ID + " TEXT," + KEY_PATIENT_NAME
@@ -164,8 +164,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + ")";
 
         String CREATE_HISOPO_TABLE = "CREATE TABLE " + TABLE_HISOPO + "("
-                + KEY_HISOPO_UUID+ " TEXT PRIMARY KEY,"
-                + KEY_HISOPO_BODYLOCATION+ " INTEGER,"
+                + KEY_HISOPO_UUID + " TEXT PRIMARY KEY,"
+                + KEY_HISOPO_BODYLOCATION + " INTEGER,"
                 + KEY_HISOPO_DATE + " TEXT,"
                 + KEY_HISOPO_MUESTRAS + " INTEGER,"
                 + FK_EVALUATION + " TEXT"
@@ -356,17 +356,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(FK_PATIENT, patientUUID);
 
         //Agregar fotos
-        for(UlcerImg img : evaluation.getUlcerList()){
+        for (UlcerImg img : evaluation.getUlcerList()) {
             int res = addUlcerIMG(img, evaluation.getUUIDNumber());
-            Log.e("ALERTA AGREGANDO IMG",">"+res);
+            Log.e("ALERTA AGREGANDO IMG", ">" + res);
         }
-        for(Hisopo his : evaluation.getHisopoList()){
+        for (Hisopo his : evaluation.getHisopoList()) {
             addHisopo(his, evaluation.getUUIDNumber());
         }
 
         return add(TABLE_EVALUATIONS, values);
     }
-
 
 
     /* Returns the latest evaluation for a patient, only with the date and the final score */
@@ -379,6 +378,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             evaluation = new Evaluation();
             evaluation.setDate(cursor.getString(0));
             evaluation.setScore(cursor.getInt(1));
+        }
+        db.close();
+        return evaluation;
+    }
+
+    public Evaluation getEvaluation(String UUID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_EVALUATIONS, new String[]{KEY_EVALUATION_DATE, KEY_EVALUATION_SCORE, KEY_EVALUATION_UUID},
+                KEY_EVALUATION_UUID + "=?", new String[]{UUID}, null, null, null, null);
+        Evaluation evaluation = null;
+        if (cursor != null && cursor.moveToLast()) {
+            evaluation = new Evaluation();
+            evaluation.setDate(cursor.getString(0));
+            evaluation.setScore(cursor.getInt(1));
+            evaluation.setUUIDNumber(cursor.getString(2));
         }
         db.close();
         return evaluation;
@@ -420,7 +434,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         );
 
         if (cursor != null && cursor.moveToFirst()) {
-            liderComunitario = new LiderComunitario(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            liderComunitario = new LiderComunitario(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
             liderComunitario.addAllPatients(getPatientsForSync(liderComunitario.getIdentification()));
         }
 
@@ -489,8 +503,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
-
     /* ULCER IMAGENES */
     public int addUlcerIMG(UlcerImg ulcer, String uuid_eval) {
         ContentValues values = new ContentValues();
@@ -514,11 +526,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_ULCERIMG,
                 new String[]{KEY_ULCERIMG_UUID,
-                                KEY_ULCERIMG_DATE,
-                                KEY_ULCERIMG_INJURIESPERLOCATION,
-                                KEY_ULCERIMG_IMGFORMAT,
-                                KEY_ULCERIMG_BODYLOCATION,
-                                KEY_ULCERIMG_IMGUUID},
+                        KEY_ULCERIMG_DATE,
+                        KEY_ULCERIMG_INJURIESPERLOCATION,
+                        KEY_ULCERIMG_IMGFORMAT,
+                        KEY_ULCERIMG_BODYLOCATION,
+                        KEY_ULCERIMG_IMGUUID},
                 FK_EVALUATION + "=?", new String[]{uuidNumber}, null, null, null, null
         );
 
@@ -594,7 +606,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_HISOPO, null);
-        Log.e("ALERTA",""+cursor);
+        Log.e("ALERTA", "" + cursor);
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 try {
@@ -602,14 +614,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     img.setUuid(cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_UUID)));
                     img.setBodyLocation(cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_BODYLOCATION)));
                     String fecha = cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_DATE));
-                    Log.e("ALERTA","fecha "+fecha);
+                    Log.e("ALERTA", "fecha " + fecha);
                     img.setImgDate(format.parse(fecha));
                     img.setImgFormat(cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_IMGFORMAT)));
                     img.setImgUUID(cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_IMGUUID)));
                     img.setInjuriesPerLocation(cursor.getString(cursor.getColumnIndex(KEY_ULCERIMG_INJURIESPERLOCATION)));
-                    Log.e("ULCERS>","NOMBRE: "+img.getImgUUID()+"   BL:"+img.getBodyLocation());
+                    Log.e("ULCERS>", "NOMBRE: " + img.getImgUUID() + "   BL:" + img.getBodyLocation());
                 } catch (ParseException e) {
-                    Log.e("ALERTA","GARRAFAL"+e.getLocalizedMessage());
+                    Log.e("ALERTA", "GARRAFAL" + e.getLocalizedMessage());
                 }
             } while (cursor.moveToNext());
         }
@@ -617,13 +629,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public int getNumeroLesiones(String evalUID) {
-        List<UlcerImg> imagenes= getAllUlcerImgByEval(evalUID);
+        List<UlcerImg> imagenes = getAllUlcerImgByEval(evalUID);
         ArrayList<String> diff = new ArrayList<>();
-        if(imagenes.size()==0) return 0;
-        if(imagenes.size()==1) return 1;
+        if (imagenes.size() == 0) return 0;
+        if (imagenes.size() == 1) return 1;
         diff.add(imagenes.get(0).getBodyLocation());
-        for (int i=1 ; i<imagenes.size() ; i++){
-            if( !diff.contains(imagenes.get(i).getBodyLocation()) ){
+        for (int i = 1; i < imagenes.size(); i++) {
+            if (!diff.contains(imagenes.get(i).getBodyLocation())) {
                 diff.add(imagenes.get(i).getBodyLocation());
             }
         }
@@ -631,17 +643,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
     public void actualizarEvaluaciones(ArrayList<Evaluation> evaluaciones) {
-        for(int i=0 ; i<evaluaciones.size() ; i++){
+        for (int i = 0; i < evaluaciones.size(); i++) {
             Evaluation a = evaluaciones.get(i);
             this.updateEvaluation(a);
         }
     }
 
-    private void updateEvaluation(Evaluation evaluation) {
+
+    public void updateEvaluation(Evaluation evaluation) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE "+TABLE_EVALUATIONS+" SET "+KEY_EVALUATION_SYNCKED+" = 1 WHERE "+KEY_EVALUATION_UUID+" = '"+evaluation.getUUIDNumber()+"'");
+        db.execSQL("UPDATE " + TABLE_EVALUATIONS + " SET " + KEY_EVALUATION_SYNCKED + " = 1 WHERE " + KEY_EVALUATION_UUID + " = '" + evaluation.getUUIDNumber() + "'");
         db.close();
     }
 }

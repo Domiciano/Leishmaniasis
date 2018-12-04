@@ -109,7 +109,7 @@
                 android:background="@color/color_transparent"
                 android:fontFamily="sans-serif-light"
                 android:hint="@string/login_id"
-                android:inputType="textPersonName"
+                android:inputType="numberPassword"
                 android:textColor="@color/color_orange"
                 android:textColorHint="@color/color_gray"
                 android:textSize="@dimen/login_text" />

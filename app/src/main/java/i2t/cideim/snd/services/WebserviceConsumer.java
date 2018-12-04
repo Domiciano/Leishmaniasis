@@ -168,9 +168,9 @@ public class WebserviceConsumer {
         public void run() {
             try {
                 for(int i=0 ; i<documents.size() ; i++) {
-                    String json = util.POSTrequest(POST_DOCUMENT, gson.toJson(documents.get(i)));
+                    String json = util.POSTrequest(POST_DOCUMENT+"a", gson.toJson(documents.get(i)));
+                    observer.onServerResponse(documents.get(i));
                 }
-                observer.onServerResponse(Constants.OK);
             } catch (IOException ex) {
                 observer.onServerResponse(Constants.IOEX);
                 System.out.println(ex.getMessage());

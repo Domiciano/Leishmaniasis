@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.cloudinary.Cloudinary;
@@ -23,6 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import i2t.cideim.R;
+import i2t.cideim.custom.BroadcastConstants;
+import i2t.cideim.leishmaniasis.SyncService;
 import i2t.cideim.util.LeishConstants;
 
 
@@ -54,12 +57,12 @@ public class CloudinaryHandler extends Service {
         config.put("api_secret", "Kmf6g1YhjqBts_a3_F-pjxp3PqE");
 
         cloudinary = new Cloudinary(config);
+        notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // The user-visible name of the channel.
             NotificationChannel miCanal = new NotificationChannel(CHANNEL_ID, name, importance);
-            notificationManager =
-                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(miCanal);
         }
 
@@ -116,6 +119,7 @@ public class CloudinaryHandler extends Service {
                     publishProgress("" + (((i + 1) / (double) archivos.size()) * 100));
                 } catch (Exception e) {
                     Log.e("ERROR_SERVICE", e.getLocalizedMessage());
+                    return "FAIL";
                 }
             }
             return "SUCCESS";
@@ -133,10 +137,8 @@ public class CloudinaryHandler extends Service {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
+            stopForeground(false);
             if (s.equals("SUCCESS")) {
-
-                stopForeground(false);
                 noteBuilder = new NotificationCompat.Builder(CloudinaryHandler.this, CHANNEL_ID)
                         .setContentText("La carga de imágenes ha finalizado")
                         .setAutoCancel(true)
@@ -151,7 +153,16 @@ public class CloudinaryHandler extends Service {
                         .setOngoing(false)
                         .setSmallIcon(R.mipmap.logo_cabezote);
                 notificationManager.notify(notifyID, noteBuilder.build());
+            }else if(s.equals("FAIL")){
+                Intent intent = new Intent(BroadcastConstants.BROADCAST_ACTION)
+                        .putExtra(BroadcastConstants.EXTENDED_DATA_STATUS, "No hay internet");
+                LocalBroadcastManager.getInstance(CloudinaryHandler.this).sendBroadcast(intent);
             }
+
+
+            stopSelf();
+
+
         }
 
         public ArrayList<File> getFiles(File directory) {

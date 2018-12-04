@@ -26,7 +26,7 @@
         android:layout_marginBottom="20dp"
         android:padding="20dp"
         android:background="#aaa"
-        android:hint="Cedula"
+        android:hint="Número de hisopos"
         android:inputType="number"
         >
     </EditText>

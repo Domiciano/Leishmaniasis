@@ -480,7 +480,7 @@ public class PiernaDerechaHisopoActivity extends AppCompatActivity implements En
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(PiernaDerechaHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }
@@ -527,7 +527,7 @@ public class PiernaDerechaHisopoActivity extends AppCompatActivity implements En
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(PiernaDerechaHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }

@@ -523,7 +523,7 @@ public class TroncoHisopoActivity extends AppCompatActivity implements EntryDial
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(TroncoHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }
@@ -570,7 +570,7 @@ public class TroncoHisopoActivity extends AppCompatActivity implements EntryDial
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", ""+numeroHisopos, bodyLoc , "OK");
                     dialog.setOnDialogDismiss(TroncoHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }

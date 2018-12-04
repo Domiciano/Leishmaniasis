@@ -525,7 +525,7 @@ public class CabezaHisopoActivity extends AppCompatActivity implements EntryDial
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", "" + numeroHisopos, bodyLoc, "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", "" + numeroHisopos, bodyLoc, "OK");
                     dialog.setOnDialogDismiss(CabezaHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }
@@ -564,7 +564,7 @@ public class CabezaHisopoActivity extends AppCompatActivity implements EntryDial
                         }
                     }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    EntryDialog dialog = EntryDialog.newInstance("¿Cuantas muestras obtuvo de esta zona?", "" + numeroHisopos, bodyLoc, "OK");
+                    EntryDialog dialog = EntryDialog.newInstance("¿Cuántos hisopos obtuvo de esta zona?", "" + numeroHisopos, bodyLoc, "OK");
                     dialog.setOnDialogDismiss(CabezaHisopoActivity.this);
                     dialog.show(ft, "dialog_fiebre");
                 }
@@ -615,6 +615,9 @@ public class CabezaHisopoActivity extends AppCompatActivity implements EntryDial
             }
         }
         //Agregar uno nuevo
+
+        if(sintoma.trim().isEmpty()) return;
+
         if(!sintoma.trim().equals("0")){
             Hisopo h = new Hisopo(UUID.randomUUID().toString(), "" + bodylocation, Calendar.getInstance().getTime(), Integer.parseInt(sintoma));
             EvaluationActivity.currentEvaluation.getHisopoList().add(h);

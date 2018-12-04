@@ -74,7 +74,6 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
         SyncServiceMessageReceiver syncServiceMessageReceiver = new SyncServiceMessageReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(syncServiceMessageReceiver, syncServiceMessageIntentFilter);
 
-
     }
 
     public void onStart() {
@@ -184,6 +183,8 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
         builder.setPositiveButton(R.string.patients_sync_close, null);
         dialog = builder.create();
         dialog.show();
+
+
         //Intent serviceIntent = new Intent(PatientsActivity.this,
         //        SyncService.class);
         //LiderComunitario syncUser = db.getUserForSync(user.getIdentification());
@@ -203,6 +204,9 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
         u.reader = true;
         u.writer = true;
 
+
+        //TODO: 1. Primero hacer un GET USER BY CEDULA Y MANDAR SI NO ESTÁ
+
         WebserviceConsumer.PostUserByCedula postuser = new WebserviceConsumer.PostUserByCedula(g.toJson(u), u.nationalId);
         postuser.setObserver(new WebserviceConsumer.ServerResponseReceiver() {
             @Override
@@ -212,9 +216,9 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
         });
         postuser.start();
 
+        //Hilo de imágenes
         Intent ser = new Intent(getApplicationContext(), CloudinaryHandler.class);
         getApplicationContext().startService(ser);
-
     }
 
     private void generarDocumentos() {
@@ -234,10 +238,10 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
                 if (!evaluation.isSyncked()) {
                     evaluaciones.add(evaluation);
                     Document document = new Document();
-                    document.id = UUID.randomUUID().toString();
+                    document.id = evaluation.getUUIDNumber();
                     document.lastDateUpdate = dateformatter.format(Calendar.getInstance().getTime());
                     document.pacienteId = patient.getUUIDNumber();
-                    document.evaluadorId = comunitario.getId();
+                    document.evaluadorId = comunitario.getIdentification();
                     document.date = evaluation.getDate();
                     document.umbral = (int) evaluation.getUmbral();
                     document.puntaje = (int) evaluation.getScore();
@@ -258,7 +262,6 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
                     document.cantidadFoto = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
                     document.latitud = Double.parseDouble(patient.getLat());
                     document.longitud = Double.parseDouble(patient.getLng());
-                    ;
 
                     document.numeroTotalLesiones = db.getNumeroLesiones(evaluation.getUUIDNumber());
                     document.numeroHisopos = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
@@ -306,20 +309,19 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
         }
 
         Log.e("ALERTA", "DOC: " + g.toJson(documentos));
-        db.actualizarEvaluaciones(evaluaciones);
 
-        /*
         WebserviceConsumer.PostListDocument documentProc = new WebserviceConsumer.PostListDocument(documentos);
         documentProc.setObserver(new WebserviceConsumer.ServerResponseReceiver() {
             @Override
             public void onServerResponse(Object json) {
+                if (json instanceof Document) {
+                    Document document = (Document) json;
+                    Evaluation eval = db.getEvaluation(document.id);
+                    db.updateEvaluation(eval);
+                }
                 if (json instanceof String) {
-                    String respuesta = (String) json;
-                    switch (respuesta) {
-                        case Constants.OK:
-                            //MARCAR EVALUACIONES PARA NO VOLVER A MANDAR
-                            db.actualizarEvaluaciones(evaluaciones);
-                            break;
+                    String code = (String) json;
+                    switch (code) {
                         case Constants.IOEX:
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -333,7 +335,7 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
             }
         });
         documentProc.start();
-        */
+
 
     }
 
