@@ -556,7 +556,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return imagenes;
     }
 
-    private int addHisopo(Hisopo his, String uuidNumber) {
+    public int addHisopo(Hisopo his, String uuidNumber) {
         ContentValues values = new ContentValues();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         values.put(KEY_HISOPO_UUID, his.getUuid()); //TEXT
@@ -568,7 +568,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    private List<Hisopo> getAllHisoposByEval(String uuidNumber) {
+    public List<Hisopo> getAllHisoposByEval(String uuidNumber) {
         ArrayList<Hisopo> hisopos = new ArrayList<>();
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");

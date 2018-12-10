@@ -30,6 +30,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -157,12 +159,17 @@ public class ThumbnailsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 10 && resultCode == RESULT_OK){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String path = preferences.getString("last_foto","NO_FOTO");
-            if(!path.equals("NO_FOTO")) {
-                Intent i = new Intent(this, VistaPreviaFotoActivity.class);
-                i.putExtra("foto_path", path);
-                startActivity(i);
+            try {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String path = preferences.getString("last_foto", "NO_FOTO");
+
+                if (!path.equals("NO_FOTO")) {
+                    Intent i = new Intent(this, VistaPreviaFotoActivity.class);
+                    i.putExtra("foto_path", path);
+                    startActivity(i);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }else if(requestCode == 11 && resultCode == RESULT_OK){
             refresh();
@@ -265,12 +272,10 @@ public class ThumbnailsActivity extends AppCompatActivity {
         preferences.edit().putString("last_foto",foto.toString())
                 .putInt("id_zona",id_zona).commit();
 
-        Uri uri = Uri.fromFile(foto);
-
+        Uri uri = ImageUtils.getImageContentUri(this, foto);
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(i, 10);
-
     }
 
     public void doVolver(View v){

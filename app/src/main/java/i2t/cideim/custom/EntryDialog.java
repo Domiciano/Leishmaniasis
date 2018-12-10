@@ -39,7 +39,7 @@ public class EntryDialog extends DialogFragment implements View.OnClickListener{
 
         Bundle args = new Bundle();
         args.putString("texto", texto);
-        args.putString("cedula", cedula);
+        args.putString("nationalId", cedula);
         args.putString("confirmacion", confirmacion);
         args.putInt("bodylocation", bodyLoc);
         f.setArguments(args);
@@ -51,7 +51,7 @@ public class EntryDialog extends DialogFragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.texto = getArguments().getString("texto");
-        this.cedula = getArguments().getString("cedula");
+        this.cedula = getArguments().getString("nationalId");
         this.confirmacion = getArguments().getString("confirmacion");
         this.bodylocation = getArguments().getInt("bodylocation");
     }

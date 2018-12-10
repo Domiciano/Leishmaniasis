@@ -25,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
 
 import i2t.cideim.R;
 import i2t.cideim.cloudinary.CloudinaryHandler;
@@ -34,10 +33,12 @@ import i2t.cideim.custom.PatientsListAdapter;
 import i2t.cideim.data.DatabaseHandler;
 import i2t.cideim.dto.Constants;
 import i2t.cideim.dto.Document;
+import i2t.cideim.dto.HisopoDTO;
 import i2t.cideim.dto.PatientDTO;
 import i2t.cideim.dto.UlcerImgDTO;
 import i2t.cideim.dto.Usuario;
 import i2t.cideim.model.Evaluation;
+import i2t.cideim.model.Hisopo;
 import i2t.cideim.model.LiderComunitario;
 import i2t.cideim.model.Patient;
 import i2t.cideim.model.UlcerImg;
@@ -264,7 +265,7 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
                     document.longitud = Double.parseDouble(patient.getLng());
 
                     document.numeroTotalLesiones = db.getNumeroLesiones(evaluation.getUUIDNumber());
-                    document.numeroHisopos = db.getAllUlcerImgByEval(evaluation.getUUIDNumber()).size();
+                    document.numeroHisopos = db.getAllHisoposByEval(evaluation.getUUIDNumber()).size();
 
                     List<UlcerImg> imgs = db.getAllUlcerImgByEval(evaluation.getUUIDNumber());
                     ArrayList<UlcerImgDTO> fotoLesiones = new ArrayList<>();
@@ -273,19 +274,31 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
                         img.id = imgs.get(j).getImgUUID();
                         img.filename = imgs.get(j).getImgUUID();
                         img.imgDate = dateformatter.format(imgs.get(j).getImgDate());
-                        img.url = "-";
+                        img.url = imgs.get(j).getInjuriesPerLocation();
                         img.patientId = patient.getUUIDNumber();
                         img.raterId = comunitario.getId();
                         img.evaluationId = evaluation.getUUIDNumber();
-
+                        img.bodyLocation = imgs.get(j).getBodyLocation();
                         fotoLesiones.add(img);
                     }
                     document.fotoLesiones = fotoLesiones;
 
 
+                    List<Hisopo> hisopos = db.getAllHisoposByEval(evaluation.getUUIDNumber());
+                    ArrayList<HisopoDTO> listaHisopos = new ArrayList<>();
+                    for (int j = 0; j < hisopos.size(); j++) {
+                        HisopoDTO his = new HisopoDTO();
+                        his.id = hisopos.get(j).getUuid();
+                        his.bodyLocation = hisopos.get(j).getBodyLocation();
+                        his.date = dateformatter.format(hisopos.get(j).getDate());
+                        his.muestras = hisopos.get(j).getMuestras();
+                        listaHisopos.add(his);
+                    }
+                    document.listaHisopos = listaHisopos;
+
                     PatientDTO patientDTO = new PatientDTO();
                     patientDTO.id = patient.getUUIDNumber();
-                    patientDTO.cedula = patient.getIdentification();
+                    patientDTO.nationalId = patient.getIdentification();
                     patientDTO.name = patient.getName();
                     patientDTO.lastName = patient.getLastName();
                     patientDTO.documentType = patient.getDocumentType();
@@ -327,6 +340,15 @@ public class PatientsActivity extends Activity implements WebserviceConsumer.Ser
                                 @Override
                                 public void run() {
                                     Toast.makeText(PatientsActivity.this, "Error al subir los documentos", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            break;
+                        case Constants.OK:
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dialog.dismiss();
+                                    dialog.cancel();
                                 }
                             });
                             break;

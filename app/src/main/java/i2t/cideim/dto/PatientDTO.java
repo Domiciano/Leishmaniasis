@@ -2,7 +2,7 @@ package i2t.cideim.dto;
 
 public class PatientDTO {
     public String id;
-    public String cedula;
+    public String nationalId;
     public String name;
     public String lastName;
     public String documentType;

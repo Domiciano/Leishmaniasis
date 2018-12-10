@@ -225,11 +225,6 @@ public class ManoDerechaActivity extends AppCompatActivity {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String path = preferences.getString("last_foto", "NO_FOTO");
 
-                Bundle extras = data.getExtras();
-                Bitmap imageBitmap = (Bitmap) extras.get("data");
-                FileOutputStream fos = new FileOutputStream(new File(path));
-                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-
                 if (!path.equals("NO_FOTO")) {
                     preferences.edit().putString("parte_actual", "Lesiones mano derecha")
                             .putString("body_name", "cabeza").apply();
@@ -237,7 +232,7 @@ public class ManoDerechaActivity extends AppCompatActivity {
                     i.putExtra("foto_path", path);
                     startActivity(i);
                 }
-            } catch (FileNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -589,7 +584,7 @@ public class ManoDerechaActivity extends AppCompatActivity {
 
                     int id_zona = getSelectedPart();
                     //ToDO: Guardar en base de datos la nueva lesion
-                    //String cedula = paciente.getCedula();
+                    //String nationalId = paciente.getCedula();
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
                     String cedula = sp.getString("patientID", "UNKNOWN");
                     foto_code = "GUARAL_DT" + fecha_fotos + "DT" + "CC" + cedula + "CC_" + "BP" + id_zona + "BP_" + UUID.randomUUID().toString();
@@ -598,8 +593,7 @@ public class ManoDerechaActivity extends AppCompatActivity {
                     preferences.edit().putString("last_foto", foto.toString()).putString("foto_code", foto_code.toString())
                             .putInt("id_zona", id_zona).apply();
 
-                    Uri uri = Uri.fromFile(foto);
-
+                    Uri uri = ImageUtils.getImageContentUri(this, foto);
                     Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                     startActivityForResult(i, 10);

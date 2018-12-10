@@ -25,9 +25,11 @@ import i2t.cideim.custom.TriangleView;
 import i2t.cideim.data.DatabaseHandler;
 import i2t.cideim.dto.Constants;
 import i2t.cideim.dto.Document;
+import i2t.cideim.dto.HisopoDTO;
 import i2t.cideim.dto.UlcerImgDTO;
 import i2t.cideim.dto.Usuario;
 import i2t.cideim.model.Evaluation;
+import i2t.cideim.model.Hisopo;
 import i2t.cideim.model.LiderComunitario;
 import i2t.cideim.model.Patient;
 import i2t.cideim.model.UlcerImg;
@@ -165,6 +167,15 @@ public class MainActivity extends Activity implements WebserviceConsumer.ServerR
     @Override
     public void onServerResponse(Object object) {
         try {
+            if(object == null){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Informar que no hay internet
+                        textViewTitle.setText("El usuario no existe, por favor regístrese");
+                    }
+                });
+            }
             if(object instanceof String){
                 String texto = (String) object;
                 switch (texto){
@@ -173,13 +184,15 @@ public class MainActivity extends Activity implements WebserviceConsumer.ServerR
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                //Informar que no existe
+                                //Informar que no hay internet
                                 textViewTitle.setText(R.string.no_internet_connection);
                             }
                         });
                         break;
                 }
-            }else if (object instanceof Usuario) {
+            }
+            //PASO 1. Obtener el usuario
+            else if (object instanceof Usuario) {
                 Usuario user = (Usuario) object;
                 if (user.name != null) {
 
@@ -202,7 +215,9 @@ public class MainActivity extends Activity implements WebserviceConsumer.ServerR
                         }
                     });
                 }
-            } else if (object instanceof Document[]) {
+            }
+            //PASO 2: Obtener los documentos
+            else if (object instanceof Document[]) {
                 Document[] docs = (Document[]) object;
                 //[ ] Almacenar en DB local y pasar a la siguiente actividad
                 if (docs.length == 0) return;
@@ -215,7 +230,7 @@ public class MainActivity extends Activity implements WebserviceConsumer.ServerR
                 }
 
                 //EVALUACIONES
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:SSS'Z'");
                 for (int i = 0; i < docs.length; i++) {
                     Document actual = docs[i];
                     Evaluation evaluacion = new Evaluation(actual.id, actual.ulcerasBordesElevados, actual.lesionesAgrupadas, actual.localizacionCabeza, actual.localizacionTronco, actual.localizacionBrazoIzquierdo, actual.localizacionBrazoDerecho, actual.localizacionPiernaIzquierda, actual.localizacionPiernaDerecha, actual.actividadRiesgo, actual.antecedentes, actual.contactoManta, actual.date, actual.umbral, actual.puntaje, true);
@@ -224,6 +239,11 @@ public class MainActivity extends Activity implements WebserviceConsumer.ServerR
                         UlcerImgDTO imgDTO = actual.fotoLesiones.get(j);
                         UlcerImg ulcerIMG = new UlcerImg(imgDTO.id, imgDTO.bodyLocation, format.parse(imgDTO.imgDate), imgDTO.filename, imgDTO.url, "0");
                         db.addUlcerIMG(ulcerIMG, actual.id);
+                    }
+                    for (int j = 0; j < actual.listaHisopos.size(); j++) {
+                        HisopoDTO his = actual.listaHisopos.get(j);
+                        Hisopo hisopo = new Hisopo(his.id, his.bodyLocation, format.parse(his.date), his.muestras);
+                        db.addHisopo(hisopo, actual.id);
                     }
                 }
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import i2t.cideim.model.Patient;
-import i2t.cideim.model.UlcerImg;
 
 public class Document {
     public String id;
@@ -37,18 +36,21 @@ public class Document {
     public int numeroHisopos;
 
     public List<UlcerImgDTO> fotoLesiones;
+    public List<HisopoDTO> listaHisopos;
+
     public PatientDTO patient;
 
-    public static Patient[] findPatientsOfList(Document[] docs) {
+    public static Patient[]
+    findPatientsOfList(Document[] docs) {
         if(docs.length==0) return new Patient[0];
         ArrayList<Patient> patients = new ArrayList<>();
         PatientDTO first = docs[0].patient;
-        Patient firstPatient = new Patient(first.id, first.cedula, first.name, first.lastName, first.documentType, first.gender.length()>0?first.gender.charAt(0):'u', first.currentAddress, first.phone, first.birthday, first.province, first.municipality, first.lane, first.contactName, first.contactLastName, first.contactPhone, first.contactCurrentAddress, first.injuryWeeks, docs[0].latitud,docs[0].longitud);
+        Patient firstPatient = new Patient(first.id, first.nationalId, first.name, first.lastName, first.documentType, first.gender.length()>0?first.gender.charAt(0):'u', first.currentAddress, first.phone, first.birthday, first.province, first.municipality, first.lane, first.contactName, first.contactLastName, first.contactPhone, first.contactCurrentAddress, first.injuryWeeks, docs[0].latitud,docs[0].longitud);
         patients.add(firstPatient);
         if(docs.length==1) return patients.toArray(new Patient[patients.size()]);
 
         for(int i=1 ; i<docs.length ; i++){
-            Patient patient = new Patient(docs[i].patient.id, docs[i].patient.cedula, docs[i].patient.name, docs[i].patient.lastName, docs[i].patient.documentType, docs[i].patient.gender.length()>0?docs[i].patient.gender.charAt(0):'u', docs[i].patient.currentAddress, docs[i].patient.phone, docs[i].patient.birthday, docs[i].patient.province, docs[i].patient.municipality, docs[i].patient.lane, docs[i].patient.contactName, docs[i].patient.contactLastName, docs[i].patient.contactPhone, docs[i].patient.contactCurrentAddress, docs[i].patient.injuryWeeks, docs[0].latitud,docs[0].longitud);
+            Patient patient = new Patient(docs[i].patient.id, docs[i].patient.nationalId, docs[i].patient.name, docs[i].patient.lastName, docs[i].patient.documentType, docs[i].patient.gender.length()>0?docs[i].patient.gender.charAt(0):'u', docs[i].patient.currentAddress, docs[i].patient.phone, docs[i].patient.birthday, docs[i].patient.province, docs[i].patient.municipality, docs[i].patient.lane, docs[i].patient.contactName, docs[i].patient.contactLastName, docs[i].patient.contactPhone, docs[i].patient.contactCurrentAddress, docs[i].patient.injuryWeeks, docs[0].latitud,docs[0].longitud);
             if(!patients.contains(patient)){
                 patients.add(patient);
             }

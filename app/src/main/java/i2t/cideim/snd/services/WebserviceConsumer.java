@@ -14,7 +14,7 @@ import i2t.cideim.dto.Usuario;
 public class WebserviceConsumer {
     public static final String GET_USER_BY_CEDULA = "https://i2thub.icesi.edu.co:5443/guaralrpc/user/getbycedula/";
     public static final String POSR_USER = "https://i2thub.icesi.edu.co:5443/guaralrpc/user/";
-    public static final String GET_DOCLIST_BY_CEDULA = "https://i2thub.icesi.edu.co:5443/guaralrpc/document/list/userid/";
+    public static final String GET_DOCLIST_BY_CEDULA = "https://i2thub.icesi.edu.co:5443/guaralrpc/document/list/usercedula/";
     public static final String POST_DOCUMENT = "https://i2thub.icesi.edu.co:5443/guaralrpc/document/";
 
 
@@ -171,6 +171,7 @@ public class WebserviceConsumer {
                     String json = util.POSTrequest(POST_DOCUMENT+"a", gson.toJson(documents.get(i)));
                     observer.onServerResponse(documents.get(i));
                 }
+                observer.onServerResponse(Constants.OK);
             } catch (IOException ex) {
                 observer.onServerResponse(Constants.IOEX);
                 System.out.println(ex.getMessage());

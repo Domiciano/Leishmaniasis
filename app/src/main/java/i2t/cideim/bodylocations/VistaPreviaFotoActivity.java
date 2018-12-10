@@ -38,6 +38,7 @@ import i2t.cideim.R;
 import i2t.cideim.model.Evaluation;
 import i2t.cideim.model.UlcerImg;
 import i2t.cideim.util.ImageUtils;
+import i2t.cideim.util.LeishConstants;
 
 
 /**
@@ -207,8 +208,9 @@ public class VistaPreviaFotoActivity extends AppCompatActivity {
             String nombre_foto = PreferenceManager.getDefaultSharedPreferences(this).getString("foto_code","ERROR");
             //Cómo crear la ulcer
             UlcerImg ulcer = new UlcerImg(UUID.randomUUID().toString(),
-                    ""+bodylocation, Calendar.getInstance().getTime(),
-                    ".PNG", nombre_foto, "");
+                    ""+bodylocation,
+                    Calendar.getInstance().getTime(),
+                    ".PNG", nombre_foto, LeishConstants.URLBASE + nombre_foto);
 
             EvaluationActivity.currentEvaluation.addUlcer(ulcer);
 
