@@ -73,9 +73,8 @@ public class ThumbnailsActivity extends AppCompatActivity {
         setContentView(R.layout.thumbnails_activity);
 
         //TODO: SOLUCIONAR
-        StrictMode.VmPolicy.Builder newbuilder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(newbuilder.build());
-
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         carpeta = new File(Environment.getExternalStorageDirectory()+"/"+ LeishConstants.FOLDER);
         //db = new ManejadorBD(this);

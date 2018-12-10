@@ -16,6 +16,8 @@ import java.io.File;
 public class ImageUtils {
 
     public static Uri getImageContentUri(Context context, File imageFile) {
+        return Uri.fromFile(imageFile);
+        /*
         String filePath = imageFile.getAbsolutePath();
         Cursor cursor = context.getContentResolver().query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -36,6 +38,7 @@ public class ImageUtils {
                 return null;
             }
         }
+        */
     }
 
     public static int calculateInSampleSize(

@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -82,6 +83,8 @@ public class CuerpoHumanoActivity extends AppCompatActivity implements View.OnTo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cuerpo_humano_activity);
 
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
